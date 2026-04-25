@@ -1,30 +1,27 @@
 <script>
-	export let name;
+  import SiteHeader from './components/SiteHeader.svelte';
+  import HeroSection from './components/HeroSection.svelte';
+  import CasesSection from './components/CasesSection.svelte';
+  import ProgramsSection from './components/ProgramsSection.svelte';
+  import StatsSection from './components/StatsSection.svelte';
+  import NewsSection from './components/NewsSection.svelte';
+  import SiteFooter from './components/SiteFooter.svelte';
+
+  import { menu, urgentCases, programs, stats, news } from './data/content.js';
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
+<a class="skip-link" href="#main-content">Перейти к содержимому</a>
 
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
+<div class="page">
+  <SiteHeader {menu} />
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
+  <main id="main-content">
+    <HeroSection />
+    <CasesSection items={urgentCases} />
+    <ProgramsSection items={programs} />
+    <StatsSection items={stats} />
+    <NewsSection items={news} />
+  </main>
 
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>
+  <SiteFooter />
+</div>
