@@ -1,0 +1,3064 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Индустрия AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --gold: #e7b962;
+        --orange: #ffa800;
+        --black: #000;
+        --panel: #0b0b0b;
+        --soft: rgba(255, 255, 255, 0.15);
+        --muted: rgba(255, 255, 255, 0.68);
+        --container: 1440px;
+        --px: 64px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-width: 360px;
+        background: var(--black);
+        color: #fff;
+        font-family: "Roboto", Arial, sans-serif;
+        font-variation-settings: "wdth" 100;
+        letter-spacing: 0;
+      }
+
+      img {
+        display: block;
+      }
+
+      a,
+      button {
+        color: inherit;
+      }
+
+      .container-f {
+        width: 100%;
+        max-width: var(--container);
+        margin: 0 auto;
+        padding-inline: var(--px);
+      }
+
+      .gold {
+        color: var(--gold);
+      }
+
+      .rule {
+        width: 78px;
+        height: 4px;
+        background: var(--gold);
+      }
+
+      .btn {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        border-radius: 5px;
+        padding: 13px 23px;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 18px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+      }
+
+      .btn-gold:hover,
+      .btn-white:hover {
+        background: var(--orange);
+        color: #000;
+      }
+
+      .btn-gold {
+        background: var(--gold);
+        color: #000;
+      }
+
+      .btn-white {
+        background: #fff;
+        color: #000;
+      }
+
+      .btn-dark {
+        background: transparent;
+        color: #fff;
+      }
+
+      .btn-dark:hover {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .max-btn:hover {
+        background: #fff;
+        color: #000;
+      }
+
+      .arrow {
+        width: 8px;
+        height: 16px;
+        flex: 0 0 8px;
+        background: currentColor;
+        -webkit-mask: url("data:image/svg+xml,%3Csvg width='8' height='16' viewBox='0 0 8 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 1L1 8L7 15' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg width='8' height='16' viewBox='0 0 8 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 1L1 8L7 15' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+        transform: rotate(180deg);
+      }
+
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 50;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 24px 64px 12px;
+      }
+
+      .header-inner {
+        max-width: 1920px;
+        margin: 0 auto;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 32px;
+      }
+
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 7.857px;
+        height: 40px;
+        font-weight: 700;
+        font-size: 22.857px;
+        line-height: normal;
+        white-space: nowrap;
+      }
+
+      .logo-mark {
+        width: 40px;
+        height: 40px;
+        display: grid;
+        place-items: center;
+        background: var(--gold);
+        color: #000;
+        font-family: Arial, sans-serif;
+        font-weight: 700;
+      }
+
+      .nav-wrap {
+        display: flex;
+        align-items: center;
+        gap: 80px;
+        flex-shrink: 0;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 25.14px;
+      }
+
+      .nav a {
+        transition: color 180ms ease, font-weight 180ms ease;
+      }
+
+      .nav a:hover,
+      .nav a:focus-visible {
+        color: var(--orange);
+        font-weight: 600;
+      }
+
+      .menu-btn {
+        display: none;
+        width: 50px;
+        height: 50px;
+        padding: 0 11px;
+        background: #000;
+        border: 1px solid var(--orange);
+        border-radius: 16px;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .menu-lines,
+      .menu-lines::before,
+      .menu-lines::after {
+        width: 23px;
+        height: 2px;
+        background: var(--gold);
+        display: block;
+        content: "";
+      }
+
+      .menu-lines {
+        position: relative;
+      }
+
+      .menu-lines::before,
+      .menu-lines::after {
+        position: absolute;
+        left: 0;
+      }
+
+      .menu-lines::before {
+        top: -8px;
+      }
+
+      .menu-lines::after {
+        top: 8px;
+      }
+
+      .hero {
+        position: relative;
+        height: 800px;
+        min-height: 800px;
+        display: flex;
+        align-items: flex-end;
+        overflow: hidden;
+        background: #000;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+          url("https://www.figma.com/api/mcp/asset/14fee257-27cd-4fa4-aeff-46b69095c8e3") center / contain no-repeat;
+      }
+
+      .hero-content {
+        position: relative;
+        height: 717px;
+        display: flex;
+        align-items: center;
+        padding-block: 116px 80px;
+      }
+
+      .hero-stack {
+        width: 100%;
+        height: 609px;
+        padding-top: 4px;
+        padding-inline: 12px;
+      }
+
+      .eyebrow {
+        font-size: 18px;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+
+      .hero-title {
+        margin-top: 32px;
+        font-size: 94px;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .hero-subtitle {
+        margin-top: 29px;
+        font-size: 40px;
+        font-weight: 300;
+        line-height: normal;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .hero-subtitle-line {
+        display: block;
+      }
+
+      .hero-subtitle-line:first-child,
+      .hero-subtitle-line:nth-child(2) {
+        display: inline;
+      }
+
+      .hero-line {
+        width: 119px;
+        height: 4px;
+        margin-top: 33px;
+        background: #fff;
+      }
+
+      .benefits {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        padding-block: 24px;
+        margin-top: 32px;
+      }
+
+      .benefit {
+        min-width: 78px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 11px;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.5;
+        text-transform: uppercase;
+      }
+
+      .benefit svg {
+        width: 36px;
+        height: 36px;
+        color: var(--gold);
+      }
+
+      .benefit-icon {
+        width: 36px;
+        height: 36px;
+        flex: 0 0 auto;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+
+      .divider-v {
+        width: 1px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.25);
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 21px;
+        align-items: center;
+        margin-top: 32px;
+      }
+
+      .section {
+        padding-block: 100px;
+        background: #000;
+      }
+
+      .section-tight {
+        padding-block: 64px 48px;
+      }
+
+      .about-section {
+        padding-block: 100px;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 0;
+        align-items: center;
+      }
+
+      .about-copy {
+        padding-inline: 12px;
+      }
+
+      .about-copy-stack {
+        width: 620px;
+        max-width: 100%;
+      }
+
+      .about-title-break,
+      .about-lead-break {
+        display: block;
+      }
+
+      .kicker {
+        font-size: 24px;
+        font-weight: 400;
+        text-transform: uppercase;
+      }
+
+      .h2 {
+        font-size: 56px;
+        font-weight: 700;
+        line-height: 56px;
+      }
+
+      .lead {
+        font-size: 32px;
+        line-height: 1.6;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        position: relative;
+        padding-inline: 24px;
+      }
+
+      .stat {
+        position: relative;
+        min-height: 226px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        text-align: center;
+      }
+
+      .stat:nth-child(odd)::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 1px;
+        height: 70px;
+        background: rgba(255, 255, 255, 0.5);
+        transform: translateY(-50%);
+      }
+
+      .stats::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 70px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.5);
+        transform: translate(-50%, -50%);
+      }
+
+      .stat-icon {
+        width: 56px;
+        height: 56px;
+        display: grid;
+        place-items: center;
+        color: var(--gold);
+      }
+
+      .stat:nth-child(1) .stat-icon {
+        width: 48px;
+      }
+
+      .stat:nth-child(2) .stat-icon {
+        width: 107px;
+      }
+
+      .stat-icon img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain;
+      }
+
+      .stat-number {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        gap: 2px;
+        font-size: 56px;
+        line-height: 1;
+        font-weight: 400;
+        text-transform: uppercase;
+      }
+
+      .stat-number span {
+        font-size: 39.626px;
+      }
+
+      .stat-label {
+        font-size: 14px;
+        line-height: 1.5;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+      }
+
+      .partners {
+        position: relative;
+        overflow: hidden;
+        padding-block: 100px;
+        background: #000;
+      }
+
+      .partners::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.5;
+        background: url("https://www.figma.com/api/mcp/asset/8f13cdb6-c42d-4ca8-96e4-5e889107e55d") right bottom / auto 80% no-repeat;
+      }
+
+      .partners .container-f {
+        position: relative;
+        z-index: 1;
+      }
+
+      .partner-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+        padding-inline: 12px;
+      }
+
+      .partners-top {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 48px;
+        align-items: flex-start;
+      }
+
+      .partners-heading {
+        width: 620px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      .partners-copy {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 24px;
+        line-height: 36px;
+      }
+
+      .general-partner {
+        flex: 1 1 0;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .general-label {
+        color: var(--gold);
+        font-size: 30px;
+        font-weight: 400;
+        text-align: center;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .general-card {
+        width: 100%;
+        min-height: 269px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 48px;
+        border: 1px solid var(--orange);
+        border-radius: 16px;
+        background: #000;
+      }
+
+      .general-card img {
+        width: 100%;
+        aspect-ratio: 616 / 170;
+        object-fit: contain;
+      }
+
+      .partner-logos {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .partner-logo-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .partner-logo {
+        min-height: 123px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px 48px;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        border-radius: 16px;
+        background: #000;
+      }
+
+      .partner-logo img {
+        width: 100%;
+        max-height: 75px;
+        aspect-ratio: 248 / 75;
+        object-fit: contain;
+      }
+
+      .show-all {
+        width: max-content;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 13px 23px;
+        border-radius: 5px;
+        background: #000;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 18px;
+        text-transform: uppercase;
+        transition: background-color 180ms ease, color 180ms ease;
+      }
+
+      .show-all:hover {
+        background: #fff;
+        color: #000;
+      }
+
+      .show-all span {
+        width: 18px;
+        height: 18px;
+        flex: 0 0 18px;
+        overflow: hidden;
+        color: transparent;
+        font-size: 0;
+        background: #fff;
+        -webkit-mask: url("data:image/svg+xml,%3Csvg width='8' height='16' viewBox='0 0 8 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 1L1 8L7 15' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 8px 16px no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg width='8' height='16' viewBox='0 0 8 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 1L1 8L7 15' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 8px 16px no-repeat;
+        transform: rotate(-90deg);
+      }
+
+      .show-all:hover span {
+        background: #000;
+      }
+
+      .partners-cta {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        padding: 24px 30px;
+        border: 2px solid var(--orange);
+        border-radius: 16px;
+        background: rgba(0, 0, 0, 0.72);
+      }
+
+      .partners-cta-icon {
+        width: 55.799px;
+        height: 56px;
+        flex: 0 0 auto;
+      }
+
+      .partners-cta-body {
+        flex: 1 1 0;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .partners-cta-title {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: normal;
+      }
+
+      .partners-cta-row {
+        display: flex;
+        align-items: flex-end;
+        gap: 12px;
+      }
+
+      .partners-cta-check {
+        width: 30px;
+        height: 30px;
+        flex: 0 0 auto;
+      }
+
+      .partners-cta-text {
+        font-size: 18px;
+        line-height: 24px;
+      }
+
+      .experts-section {
+        padding-block: 100px;
+        background: #000;
+      }
+
+      .experts-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+        padding-inline: 12px;
+      }
+
+      .experts-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 48px;
+      }
+
+      .experts-title {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .experts-kicker {
+        color: var(--orange);
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 20px;
+        text-transform: uppercase;
+      }
+
+      .experts-section .rule {
+        display: none;
+      }
+
+      .experts-copy {
+        width: 548px;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 36px;
+        text-align: right;
+      }
+
+      .expert-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .expert-card {
+        height: 544px;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        overflow: hidden;
+        border: 1px solid rgba(227, 208, 178, 0.1);
+        border-radius: 24px;
+        background: #161616;
+      }
+
+      .expert-image {
+        display: block;
+        position: relative;
+        flex: 1 1 0;
+        min-height: 0;
+        overflow: hidden;
+        border-radius: 18px 18px 0 0;
+      }
+
+      .expert-image img {
+        width: 100%;
+        height: 100% !important;
+        object-fit: cover;
+      }
+
+      .expert-card:nth-child(3) .expert-image img {
+        width: 121.05%;
+        height: 141.37% !important;
+        max-width: none;
+        transform: translate(-17.4%, -23.33%);
+      }
+
+      .expert-body {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 0 24px 24px;
+      }
+
+      .expert-badge {
+        width: 100%;
+        min-height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 18px;
+        border: 1.129px solid var(--gold);
+        border-radius: 100px;
+        color: var(--gold);
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 12px;
+        letter-spacing: 1.1285px;
+        text-transform: uppercase;
+      }
+
+      .expert-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .expert-name {
+        color: #fff;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 24px;
+      }
+
+      .expert-role {
+        min-height: 24px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 16px;
+        text-transform: uppercase;
+      }
+
+      .expert-topic {
+        color: var(--gold);
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 14px;
+      }
+
+      .topics-section {
+        padding-block: 100px;
+        background: #111;
+      }
+
+      .topics-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+        padding-inline: 12px;
+      }
+
+      .topics-head {
+        display: flex;
+        gap: 32px;
+        align-items: flex-start;
+        width: 100%;
+      }
+
+      .topics-title {
+        flex: 1 1 0;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .topics-title-main {
+        display: flex;
+        flex-direction: column;
+        gap: 21px;
+        align-items: flex-start;
+      }
+
+      .topics-copy {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 30px;
+        font-weight: 400;
+        line-height: 36px;
+      }
+
+      .topics-spacer {
+        flex: 1 1 0;
+        min-width: 0;
+        height: 72px;
+      }
+
+      .topics-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+        width: 100%;
+      }
+
+      .topic {
+        min-height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 12px 30px;
+        border: 1px solid rgba(179, 140, 100, 0.15);
+        border-radius: 12px;
+        background-image: linear-gradient(129deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+        color: var(--gold);
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 24px;
+      }
+
+      .topic-chevron {
+        flex: 0 0 auto;
+        width: 7px;
+        color: var(--gold);
+        font-family: Arial, sans-serif;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 1;
+        opacity: 0.7;
+      }
+
+      .pricing-section {
+        padding-block: 100px;
+        background: #000;
+      }
+
+      .pricing-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 48px;
+        padding-inline: 12px;
+      }
+
+      .pricing-head {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        gap: 24px;
+      }
+
+      .pricing-intro {
+        flex: 1 1 0;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+      }
+
+      .pricing-title-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .pricing-kicker {
+        color: var(--orange);
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 20px;
+        text-transform: uppercase;
+      }
+
+      .pricing-copy {
+        width: 639px;
+        max-width: 100%;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 36px;
+      }
+
+      .pricing-timer {
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        padding: 24px;
+        border: 1px solid var(--orange);
+        border-radius: 16px;
+        font-family: Inter, "Roboto", Arial, sans-serif;
+        white-space: nowrap;
+      }
+
+      .pricing-timer-label {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 16px;
+        line-height: normal;
+      }
+
+      .pricing-timer-value {
+        color: #fff;
+        font-size: 40px;
+        line-height: normal;
+      }
+
+      .pricing-plans {
+        width: 100%;
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        gap: 36px;
+        padding-block: 24px;
+      }
+
+      .pricing-card {
+        position: relative;
+        flex: 1 1 0;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 48px;
+        overflow: hidden;
+        padding: 46px 34px 52px;
+        border: 2px solid rgba(221, 228, 236, 0.15);
+        border-radius: 24px;
+        background: #1a1c1d;
+      }
+
+      .pricing-card.is-popular {
+        overflow: visible;
+        border-color: var(--gold);
+      }
+
+      .popular-pill {
+        position: absolute;
+        top: -23px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 24px;
+        border-radius: 60px;
+        background: radial-gradient(94% 100% at 50% 50%, #fbec9d 0%, #edcd75 36%, #dfae4d 72%);
+        color: #000;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: normal;
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      .pricing-card-main {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 33px;
+      }
+
+      .pricing-card-title {
+        color: #fff;
+        font-size: 38px;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .pricing-card-subtitle {
+        color: var(--gold);
+        font-size: 21px;
+        font-weight: 700;
+        line-height: normal;
+        text-align: center;
+      }
+
+      .pricing-features {
+        width: 100%;
+        height: 325px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .pricing-feature-list {
+        display: flex;
+        flex-direction: column;
+        gap: 27px;
+        width: 100%;
+      }
+
+      .pricing-card:nth-child(2) .pricing-feature-list {
+        gap: 33px;
+      }
+
+      .pricing-card:nth-child(3) .pricing-feature-list {
+        gap: 36px;
+      }
+
+      .pricing-feature {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        color: #fff;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      .pricing-feature img {
+        width: 26px;
+        height: 26px !important;
+        flex: 0 0 auto;
+      }
+
+      .pricing-rule {
+        width: 100%;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.16);
+      }
+
+      .pricing-price {
+        color: var(--gold);
+        font-size: 52px;
+        font-weight: 700;
+        line-height: normal;
+        white-space: nowrap;
+      }
+
+      .pricing-btn {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 13px 23px;
+        border-radius: 5px;
+        background: var(--gold);
+        color: #000;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 18px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        transition: background-color 180ms ease, color 180ms ease;
+      }
+
+      .pricing-btn:hover {
+        background: var(--orange);
+        color: #000;
+      }
+
+      .pricing-btn::after {
+        content: "";
+        width: 8px;
+        height: 18px;
+        flex: 0 0 8px;
+        background: currentColor;
+        -webkit-mask: url("data:image/svg+xml,%3Csvg width='8' height='16' viewBox='0 0 8 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 1L1 8L7 15' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg width='8' height='16' viewBox='0 0 8 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 1L1 8L7 15' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+        transform: rotate(180deg);
+      }
+
+      .pricing-help {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 24px 48px;
+        border: 1px solid var(--orange);
+        border-radius: 16px;
+      }
+
+      .pricing-help-copy {
+        flex: 1 1 auto;
+        min-width: 0;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .pricing-help-copy img {
+        width: 54.245px;
+        height: 52px !important;
+        flex: 0 0 auto;
+      }
+
+      .pricing-help-copy p {
+        width: 455.869px;
+        max-width: 100%;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 24px;
+      }
+
+      .pricing-help .pricing-btn {
+        flex: 0 0 auto;
+      }
+
+      .team-section {
+        padding-block: 100px;
+        background: #000;
+      }
+
+      .team-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 56px;
+        padding-inline: 12px;
+      }
+
+      .team-head {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 21px;
+        align-items: flex-start;
+        padding-bottom: 48px;
+      }
+
+      .team-copy {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 36px;
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 64px 32px;
+        width: 100%;
+      }
+
+      .team-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 24px;
+        min-width: 0;
+      }
+
+      .team-photo {
+        position: relative;
+        flex: 0 0 auto;
+        width: 96px;
+        height: 96px;
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 18px;
+      }
+
+      .team-photo img {
+        width: 100%;
+        height: 100% !important;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 18px;
+      }
+
+      .team-julia .team-photo img {
+        height: 200% !important;
+        object-position: top center;
+      }
+
+      .team-dmitry .team-photo img,
+      .team-alexey .team-photo img {
+        height: 125% !important;
+        object-position: top center;
+      }
+
+      .team-info {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 6px;
+        padding-top: 2px;
+      }
+
+      .team-name {
+        color: #fff;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: normal;
+      }
+
+      .team-role {
+        color: #fff;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        text-transform: uppercase;
+      }
+
+      .team-company {
+        color: var(--gold);
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 16px;
+      }
+
+      .faq-section {
+        padding-block: 100px;
+        background: #111;
+      }
+
+      .faq-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+        padding-inline: 12px;
+      }
+
+      .faq-title {
+        width: 100%;
+        color: #fff;
+        font-size: 56px;
+        font-weight: 800;
+        line-height: 56px;
+      }
+
+      .faq-list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .faq-mobile-list {
+        display: none;
+      }
+
+      .faq-item {
+        width: 100%;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        padding-block: 24px;
+      }
+
+      .faq-item summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        cursor: pointer;
+        list-style: none;
+        font-size: 26px;
+        line-height: 32px;
+        font-weight: 500;
+      }
+
+      .faq-item summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .faq-arrow {
+        flex: 0 0 auto;
+        width: 24px;
+        height: 24px;
+        background: url("https://www.figma.com/api/mcp/asset/11f96dc2-66e6-46bc-b592-7b1c80e5ddf1") center / 24px 24px no-repeat;
+        transform: rotate(180deg);
+      }
+
+      .faq-item:not([open]) .faq-arrow {
+        transform: rotate(0deg);
+      }
+
+      .faq-answer {
+        padding: 24px 24px 0;
+        color: #fff;
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 32px;
+      }
+
+      .faq-answer p + p {
+        margin-top: 0;
+      }
+
+      .footer {
+        border-top: 0 solid rgba(255, 255, 255, 0.25);
+        background: #000;
+      }
+
+      .footer .container-f {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        max-width: var(--container);
+        padding-inline: 64px;
+      }
+
+      .footer-main {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        width: 100%;
+      }
+
+      .footer-tablet-row,
+      .footer-contact-grid {
+        display: contents;
+      }
+
+      .footer-col {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding-inline: 12px;
+      }
+
+      .footer-title {
+        margin: 0;
+        font-size: 28px;
+        line-height: 36px;
+        font-weight: 400;
+      }
+
+      .footer-place {
+        margin: 0;
+        color: var(--gold);
+        font-size: 20px;
+        line-height: normal;
+      }
+
+      .socials {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        padding-top: 8px;
+      }
+
+      .social {
+        width: 32px;
+        height: 32px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--gold);
+        color: #000;
+        font-size: 0;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .social::before {
+        content: "";
+        display: block;
+        background: currentColor;
+      }
+
+      .social-tg::before {
+        width: 18px;
+        height: 16px;
+        -webkit-mask: url("data:image/svg+xml,%3Csvg width='18' height='16' viewBox='0 0 18 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.4.8 14.8 15c-.2.9-.7 1.1-1.4.7L9.5 12.8l-1.9 1.8c-.2.2-.4.4-.8.4l.3-4.1L14.7 4c.3-.3-.1-.4-.5-.1L4.8 9.8.8 8.5c-.9-.3-.9-.9.2-1.3L16.4.9c.7-.3 1.3.2 1 1Z'/%3E%3C/svg%3E") center / contain no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg width='18' height='16' viewBox='0 0 18 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.4.8 14.8 15c-.2.9-.7 1.1-1.4.7L9.5 12.8l-1.9 1.8c-.2.2-.4.4-.8.4l.3-4.1L14.7 4c.3-.3-.1-.4-.5-.1L4.8 9.8.8 8.5c-.9-.3-.9-.9.2-1.3L16.4.9c.7-.3 1.3.2 1 1Z'/%3E%3C/svg%3E") center / contain no-repeat;
+      }
+
+      .social-vk::before {
+        content: "vk";
+        width: auto;
+        height: auto;
+        background: transparent;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        text-transform: lowercase;
+      }
+
+      .social-yt::before {
+        width: 16px;
+        height: 18px;
+        -webkit-mask: url("data:image/svg+xml,%3Csvg width='16' height='18' viewBox='0 0 16 18' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 7.3c1.3.8 1.3 2.6 0 3.4L3.8 17.2c-1.3.8-2.8-.2-2.8-1.7v-13C1 1 2.5.1 3.8.8L15 7.3Z'/%3E%3C/svg%3E") center / contain no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg width='16' height='18' viewBox='0 0 16 18' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 7.3c1.3.8 1.3 2.6 0 3.4L3.8 17.2c-1.3.8-2.8-.2-2.8-1.7v-13C1 1 2.5.1 3.8.8L15 7.3Z'/%3E%3C/svg%3E") center / contain no-repeat;
+      }
+
+      .footer-socials-contact {
+        display: none;
+      }
+
+      .contact-list {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        color: #fff;
+        font-size: 18px;
+        line-height: normal;
+        white-space: nowrap;
+      }
+
+      .contact-list p {
+        margin: 0;
+      }
+
+      .contact-list span:first-child {
+        font-weight: 300;
+        color: #fff;
+      }
+
+      .contact-list span:last-child {
+        color: var(--gold);
+        font-weight: 500;
+      }
+
+      .footer-sep {
+        height: 1px;
+        background: rgba(255, 255, 255, 0.25);
+        width: 100%;
+      }
+
+      .footer-bottom {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        row-gap: 24px;
+        width: 100%;
+        color: var(--gold);
+        font-size: 14px;
+        line-height: 32px;
+      }
+
+      .footer-bottom .footer-col {
+        gap: 4px;
+      }
+
+      .footer-bottom a {
+        display: block;
+      }
+
+      .copyright {
+        margin: 0;
+        color: #fff;
+        font-weight: 300;
+      }
+
+      @media (max-width: 1279px) and (min-width: 768px) {
+        :root {
+          --px: 32px;
+        }
+
+        .site-header {
+          padding: 24px 32px 12px;
+        }
+
+        .nav {
+          display: none;
+        }
+
+        .nav-wrap {
+          gap: 16px;
+        }
+
+        .menu-btn {
+          display: inline-flex;
+        }
+
+        .hero {
+          height: 729.387px;
+          min-height: 729px;
+          padding-top: 40px;
+        }
+
+        .hero::before {
+          background:
+            linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+            url("https://www.figma.com/api/mcp/asset/b88dc036-0d62-47b1-8fcf-7aad9d07e270") center / cover no-repeat;
+        }
+
+        .hero-content {
+          height: auto;
+          padding-block: 100px 80px;
+        }
+
+        .hero-stack {
+          width: 100%;
+          height: auto;
+          padding-top: 0;
+          padding-inline: 12px;
+        }
+
+        .eyebrow {
+          font-size: 16px;
+        }
+
+        .hero-title {
+          margin-top: 24px;
+          font-size: 65px;
+          line-height: normal;
+        }
+
+        .hero-subtitle {
+          margin-top: 16px;
+          font-size: 35px;
+          line-height: normal;
+          letter-spacing: 0.875px;
+        }
+
+        .hero-subtitle-line,
+        .hero-subtitle-line:first-child,
+        .hero-subtitle-line:nth-child(2) {
+          display: block;
+        }
+
+        .hero-line {
+          margin-top: 24px;
+        }
+
+        .benefits {
+          margin-top: 0;
+        }
+
+        .hero-actions {
+          margin-top: 0;
+        }
+
+        .about-grid,
+        .partner-layout,
+        .price-head {
+          grid-template-columns: 1fr;
+        }
+
+        .partners {
+          padding-block: 100px;
+        }
+
+        .partners::after {
+          background-image: url("https://www.figma.com/api/mcp/asset/4f34743a-77eb-410b-9b57-2c02f891e7bf");
+          background-size: auto 86%;
+        }
+
+        .partner-layout {
+          gap: 80px;
+        }
+
+        .partners-top {
+          flex-direction: column;
+          gap: 48px;
+        }
+
+        .partners-heading {
+          width: 100%;
+        }
+
+        .partner-logo-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .partners-cta {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .partners-cta-icon {
+          display: none;
+        }
+
+        .about-section {
+          padding-block: 100px 40px;
+        }
+
+        .about-grid {
+          gap: 48px;
+          text-align: center;
+        }
+
+        .about-copy {
+          padding-inline: 12px;
+        }
+
+        .about-copy-stack {
+          width: 100%;
+        }
+
+        .about-title-break,
+        .about-lead-break {
+          display: none;
+        }
+
+        .about-grid .rule,
+        .section-centered .rule {
+          margin-inline: auto;
+        }
+
+        .lead {
+          font-size: 24px;
+        }
+
+        .experts-wrap {
+          padding-inline: 12px;
+        }
+
+        .experts-title {
+          width: 100%;
+        }
+
+        .experts-head {
+          flex-direction: column;
+          gap: 24px;
+        }
+
+        .experts-section .rule {
+          display: block;
+        }
+
+        .experts-copy {
+          width: 100%;
+          text-align: left;
+        }
+
+        .expert-grid {
+          grid-template-columns: repeat(2, minmax(300px, 1fr));
+          align-items: start;
+        }
+
+        .expert-card {
+          height: auto;
+          border-radius: 24px;
+        }
+
+        .expert-image {
+          flex: none;
+          width: 100%;
+          aspect-ratio: 304 / 344;
+        }
+
+        .topics-head {
+          gap: 0;
+        }
+
+        .topics-spacer {
+          display: none;
+        }
+
+        .topics-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .pricing-head {
+          flex-direction: column;
+          align-items: center;
+          gap: 48px;
+        }
+
+        .pricing-intro {
+          width: 100%;
+        }
+
+        .pricing-timer {
+          flex-direction: row;
+        }
+
+        .pricing-plans {
+          flex-direction: column;
+          align-items: center;
+          gap: 60px;
+        }
+
+        .pricing-card {
+          flex: none;
+          width: 600px;
+          max-width: 100%;
+        }
+
+        .pricing-help {
+          padding: 24px;
+        }
+
+        .plans {
+          grid-template-columns: 1fr;
+          max-width: 600px;
+          margin-inline: auto;
+        }
+
+        .team-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .team-section {
+          padding-block: 100px;
+        }
+
+        .footer {
+          border-top-width: 1px;
+        }
+
+        .footer .container-f {
+          padding-inline: 32px;
+        }
+
+        .footer-main {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+        }
+
+        .footer-tablet-row {
+          display: flex;
+          align-items: center;
+          width: 100%;
+        }
+
+        .footer-tablet-row .footer-col {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto;
+          grid-template-areas:
+            "date button"
+            "place button"
+            "socials socials";
+          align-items: end;
+          column-gap: 24px;
+          width: 100%;
+        }
+
+        .footer-tablet-row .footer-title {
+          grid-area: date;
+        }
+
+        .footer-tablet-row .footer-place {
+          grid-area: place;
+          font-size: 16px;
+          line-height: 30px;
+        }
+
+        .footer-tablet-row .btn {
+          grid-area: button;
+        }
+
+        .footer-contact-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 24px;
+          width: 100%;
+        }
+
+        .footer-socials-main {
+          display: none;
+        }
+
+        .footer-socials-contact {
+          display: flex;
+        }
+
+        .footer-bottom {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 36px;
+        }
+      }
+
+      @media (max-width: 767px) {
+        :root {
+          --px: 24px;
+        }
+
+        .site-header {
+          padding: 12px 12px 12px 24px;
+        }
+
+        .header-inner {
+          align-items: flex-start;
+        }
+
+        .logo {
+          font-size: 22.857px;
+        }
+
+        .nav,
+        .max-btn {
+          display: none;
+        }
+
+        .nav-wrap {
+          gap: 0;
+        }
+
+        .menu-btn {
+          display: inline-flex;
+        }
+
+        .hero {
+          height: 508px;
+          min-height: 508px;
+        }
+
+        .hero::before {
+          background:
+            linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+            url("https://www.figma.com/api/mcp/asset/590b7ea3-fabc-433b-85b0-e7aeed088720") 62% center / 254.73% 100% no-repeat;
+        }
+
+        .hero-content {
+          height: auto;
+          padding-block: 100px 40px;
+        }
+
+        .hero-stack {
+          height: auto;
+          padding: 0;
+        }
+
+        .eyebrow {
+          font-size: 14px;
+          line-height: 1.35;
+        }
+
+        .hero-title {
+          margin-top: 24px;
+          font-size: 32px;
+          line-height: normal;
+          white-space: normal;
+        }
+
+        .hero-subtitle {
+          margin-top: 16px;
+          font-size: 18px;
+          line-height: normal;
+          letter-spacing: 0.45px;
+        }
+
+        .hero-subtitle-line,
+        .hero-subtitle-line:first-child,
+        .hero-subtitle-line:nth-child(2) {
+          display: block;
+        }
+
+        .hero-line {
+          margin-top: 24px;
+        }
+
+        .benefits {
+          display: none;
+        }
+
+        .hero-actions {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 21px;
+          margin-top: 24px;
+        }
+
+        .btn {
+          width: 100%;
+        }
+
+        .section {
+          padding-block: 40px;
+        }
+
+        .section-tight {
+          padding-block: 40px;
+        }
+
+        .about-grid,
+        .partner-layout,
+        .price-head {
+          grid-template-columns: 1fr;
+          gap: 48px;
+        }
+
+        .partners {
+          padding-block: 40px;
+        }
+
+        .partners::after {
+          background-image: url("https://www.figma.com/api/mcp/asset/adab2885-70d4-4876-9600-ddf35d8dc8b3");
+          background-position: right center;
+          background-size: auto 100%;
+        }
+
+        .partner-layout {
+          gap: 24px;
+          padding-inline: 0;
+        }
+
+        .partners-top {
+          flex-direction: column;
+          gap: 48px;
+        }
+
+        .partners-heading {
+          width: 100%;
+          gap: 32px;
+        }
+
+        .partners-copy {
+          font-size: 18px;
+          line-height: normal;
+        }
+
+        .general-partner {
+          width: 100%;
+        }
+
+        .general-label {
+          font-size: 16px;
+        }
+
+        .general-card {
+          min-height: 109px;
+          padding: 32px;
+        }
+
+        .partner-logos {
+          gap: 24px;
+        }
+
+        .partner-logo-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 24px;
+        }
+
+        .partner-logo {
+          min-height: 72px;
+          padding: 16px;
+        }
+
+        .partner-logo img {
+          max-height: 40px;
+          aspect-ratio: 112 / 40;
+        }
+
+        .show-all {
+          font-size: 18px;
+        }
+
+        .partners-cta {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 26px;
+          padding: 24px 30px;
+        }
+
+        .partners-cta-icon {
+          display: none;
+        }
+
+        .partners-cta-title {
+          font-size: 24px;
+        }
+
+        .partners-cta-row {
+          align-items: flex-start;
+        }
+
+        .partners-cta .btn {
+          width: 100%;
+        }
+
+        .about-section {
+          padding-block: 40px;
+        }
+
+        .about-copy {
+          padding-inline: 0;
+        }
+
+        .about-copy-stack {
+          width: 100%;
+        }
+
+        .about-title-break,
+        .about-lead-break {
+          display: block;
+        }
+
+        .kicker {
+          text-align: center;
+        }
+
+        .about-grid .rule {
+          margin-inline: auto;
+        }
+
+        .h2 {
+          font-size: 32px;
+          line-height: 32px;
+        }
+
+        .lead {
+          font-size: 16px;
+          line-height: 1.6;
+        }
+
+        .stats {
+          margin-top: 0;
+        }
+
+        .stat {
+          min-height: 208px;
+          padding-inline: 8px;
+        }
+
+        .stat-number {
+          font-size: 56px;
+        }
+
+        .partner-logos,
+        .expert-grid,
+        .speaker-grid,
+        .topics-grid,
+        .plans,
+        .team-grid,
+        .footer-main,
+        .footer-bottom {
+          grid-template-columns: 1fr;
+        }
+
+        .experts-section {
+          padding-block: 40px;
+        }
+
+        .experts-wrap {
+          gap: 24px;
+          padding-inline: 0;
+        }
+
+        .experts-head {
+          flex-direction: column;
+          gap: 24px;
+        }
+
+        .experts-title {
+          gap: 18px;
+        }
+
+        .experts-section .rule {
+          display: block;
+        }
+
+        .experts-kicker {
+          font-size: 20px;
+          line-height: 20px;
+        }
+
+        .experts-copy {
+          width: 100%;
+          font-size: 18px;
+          line-height: 18px;
+          text-align: left;
+        }
+
+        .expert-grid {
+          gap: 24px;
+        }
+
+        .expert-card {
+          border-radius: 16px;
+        }
+
+        .expert-image,
+        .speaker-card img {
+          aspect-ratio: 312 / 353;
+        }
+
+        .topics-section {
+          padding-block: 40px;
+        }
+
+        .pricing-section {
+          padding-block: 40px;
+        }
+
+        .team-section {
+          padding-block: 40px;
+        }
+
+        .footer {
+          border-top-width: 1px;
+        }
+
+        .footer .container-f {
+          padding-inline: 32px;
+        }
+
+        .footer-main,
+        .footer-tablet-row,
+        .footer-contact-grid,
+        .footer-bottom {
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 36px;
+        }
+
+        .footer-col {
+          padding-inline: 0;
+        }
+
+        .footer-tablet-row .footer-col {
+          display: flex;
+        }
+
+        .footer-tablet-row .btn {
+          width: 100%;
+        }
+
+        .footer-title {
+          line-height: normal;
+        }
+
+        .footer-place,
+        .contact-list {
+          font-size: 16px;
+          white-space: normal;
+        }
+
+        .footer-contact-grid .footer-title {
+          font-size: 18px;
+        }
+
+        .footer-socials-main {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+        }
+
+        .footer-socials-contact {
+          display: flex;
+        }
+
+        .team-wrap {
+          gap: 56px;
+          padding-inline: 0;
+        }
+
+        .team-head {
+          gap: 21px;
+          padding-bottom: 48px;
+        }
+
+        .team-copy {
+          font-size: 18px;
+          font-weight: 400;
+          line-height: normal;
+        }
+
+        .pricing-wrap {
+          gap: 24px;
+          padding-inline: 0;
+        }
+
+        .pricing-head {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 48px;
+        }
+
+        .pricing-intro {
+          width: 100%;
+          flex: none;
+          gap: 48px;
+        }
+
+        .pricing-kicker {
+          font-size: 20px;
+          line-height: 20px;
+        }
+
+        .pricing-copy {
+          font-size: 18px;
+          line-height: normal;
+        }
+
+        .pricing-timer {
+          width: 100%;
+          flex-direction: column;
+        }
+
+        .pricing-timer-value {
+          font-size: 36px;
+        }
+
+        .pricing-plans {
+          flex-direction: column;
+          align-items: center;
+          gap: 48px;
+          padding-block: 24px;
+        }
+
+        .pricing-card {
+          flex: none;
+          width: 100%;
+          min-width: 300px;
+          gap: 24px;
+          padding: 36px 24px;
+        }
+
+        .popular-pill {
+          top: -23px;
+          padding: 10px 24px;
+          font-size: 16px;
+        }
+
+        .pricing-card-title {
+          font-size: 36px;
+        }
+
+        .pricing-card-subtitle {
+          font-size: 16px;
+        }
+
+        .pricing-features {
+          height: auto;
+          gap: 24px;
+        }
+
+        .pricing-feature-list,
+        .pricing-card:nth-child(2) .pricing-feature-list,
+        .pricing-card:nth-child(3) .pricing-feature-list {
+          gap: 27px;
+        }
+
+        .pricing-feature {
+          gap: 12px;
+          font-size: 16px;
+        }
+
+        .pricing-feature img {
+          width: 20px;
+          height: 20px !important;
+        }
+
+        .pricing-price {
+          font-size: 36px;
+        }
+
+        .pricing-btn {
+          width: 100%;
+        }
+
+        .pricing-help {
+          flex-direction: column;
+          align-items: stretch;
+          justify-content: center;
+          padding: 24px;
+        }
+
+        .pricing-help-copy p {
+          width: auto;
+          font-size: 16px;
+        }
+
+        .topics-wrap {
+          gap: 48px;
+          padding-inline: 0;
+        }
+
+        .topics-head,
+        .topics-title {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+        }
+
+        .topics-title-main {
+          gap: 21px;
+        }
+
+        .topics-copy {
+          font-size: 24px;
+          line-height: 24px;
+        }
+
+        .topic {
+          min-height: 0;
+          padding: 12px 12px 12px 24px;
+          font-size: 16px;
+          line-height: normal;
+        }
+
+        .timer {
+          min-width: 0;
+          width: 100%;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .timer-value {
+          font-size: 30px;
+        }
+
+        .plan {
+          min-height: auto;
+          padding: 40px 24px;
+        }
+
+        .features {
+          min-height: 0;
+        }
+
+        .help-strip {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .team-item {
+          display: flex;
+          grid-template-columns: none;
+          align-items: center;
+          gap: 24px;
+        }
+
+        .team-photo {
+          width: 80px;
+          height: 80px;
+        }
+
+        .team-name {
+          font-size: 18px;
+          line-height: normal;
+        }
+
+        .team-role,
+        .team-company {
+          font-size: 14px;
+          line-height: normal;
+        }
+
+        .team-artem {
+          order: 1;
+        }
+
+        .team-julia {
+          order: 2;
+        }
+
+        .team-dmitry {
+          order: 3;
+        }
+
+        .team-alexander {
+          order: 4;
+        }
+
+        .team-alexey {
+          order: 5;
+        }
+
+        .faq-section {
+          padding-block: 40px;
+        }
+
+        .faq-wrap {
+          gap: 48px;
+          padding-inline: 0;
+        }
+
+        .faq-title {
+          font-size: 32px;
+          line-height: 56px;
+        }
+
+        .faq-desktop-list {
+          display: none;
+        }
+
+        .faq-mobile-list {
+          display: flex;
+        }
+
+        .faq-item {
+          padding-block: 24px;
+        }
+
+        .faq-item summary {
+          font-size: 18px;
+          line-height: normal;
+        }
+
+        .faq-answer {
+          padding: 24px 24px 0;
+          font-size: 16px;
+          line-height: normal;
+        }
+
+        .footer-title {
+          font-size: 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="logo" href="#top" aria-label="Индустрия AI">
+          <span>Индустрия</span>
+          <span class="logo-mark">ИИ</span>
+        </a>
+        <div class="nav-wrap">
+          <nav class="nav" aria-label="Основная навигация">
+            <a href="#about">О форуме</a>
+            <a href="#partners">Партнёры</a>
+            <a href="#topics">Программа</a>
+            <a href="#tickets">Участвовать</a>
+            <a href="#faq">Вопросы</a>
+          </nav>
+          <a class="btn btn-dark max-btn" href="#partners">Канал в max <span class="arrow" aria-hidden="true"></span></a>
+          <button class="menu-btn" type="button" aria-label="Открыть меню"><span class="menu-lines" aria-hidden="true"></span></button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container-f hero-content">
+          <div class="hero-stack">
+            <p class="eyebrow"><span class="gold">18</span> июня <span class="gold">2026</span>, <span class="sm:inline block">Новосибирск, Гранд Автограф</span></p>
+            <h1 class="hero-title"><span class="gold">ИИ</span> для бизнеса</h1>
+            <p class="hero-subtitle"><span class="hero-subtitle-line">Как бизнесу расти </span><span class="hero-subtitle-line">и зарабатывать</span><span class="hero-subtitle-line">с помощью ИИ</span></p>
+            <div class="hero-line"></div>
+            <div class="benefits" aria-label="Преимущества">
+              <div class="benefit">
+                <span class="benefit-icon" style="width: 35.872px; background-image: url('https://www.figma.com/api/mcp/asset/825ff1fd-bcc0-4bb7-b8e6-32418cb188d0')" aria-hidden="true"></span>
+                <span>Рост<br />выручки</span>
+              </div>
+              <span class="divider-v"></span>
+              <div class="benefit">
+                <span class="benefit-icon" style="background-image: url('https://www.figma.com/api/mcp/asset/23de2fa9-a70c-4db1-abab-ffbecf15d5af')" aria-hidden="true"></span>
+                <span>снижение<br />издержек</span>
+              </div>
+              <span class="divider-v"></span>
+              <div class="benefit">
+                <span class="benefit-icon" style="width: 35.99px; background-image: url('https://www.figma.com/api/mcp/asset/e4aa6b25-3701-47ef-8f86-8a9261d5f3f3')" aria-hidden="true"></span>
+                <span>ускорение<br />процессов</span>
+              </div>
+              <span class="divider-v"></span>
+              <div class="benefit">
+                <span class="benefit-icon" style="width: 31.135px; background-image: url('https://www.figma.com/api/mcp/asset/2af94002-1674-4af9-b971-f7db59f5325a')" aria-hidden="true"></span>
+                <span>меньше<br />рутины</span>
+              </div>
+              <span class="divider-v"></span>
+              <div class="benefit">
+                <span class="benefit-icon" style="background-image: url('https://www.figma.com/api/mcp/asset/b9575be0-f57c-4866-8b3a-4aca25d1026c')" aria-hidden="true"></span>
+                <span>Улучшение<br />сервиса</span>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <a class="btn btn-gold" href="#tickets">Купить билет <span class="arrow" aria-hidden="true"></span></a>
+              <a class="btn btn-dark" href="#topics">Смотреть программу <span class="arrow" aria-hidden="true"></span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section about-section">
+        <div class="container-f about-grid">
+          <div class="about-copy">
+            <p class="kicker mb-12">О форуме</p>
+            <div class="about-copy-stack space-y-[21px]">
+              <h2 class="h2">Реальные <br class="about-title-break" />кейсы для решения <br class="about-title-break" />бизнес задач</h2>
+              <div class="rule"></div>
+              <p class="lead pt-[14px]">Форум для <span class="gold">собственников и <br class="about-lead-break" />управленцев малого и среднего бизнеса</span><br class="about-lead-break" /> в сфере розничной и оптовой<br class="about-lead-break" /> торговли и сервиса.</p>
+            </div>
+            <a class="btn btn-white mt-9" href="#tickets">Зарегистрироваться <span class="arrow" aria-hidden="true"></span></a>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-icon">
+                <svg viewBox="0 0 48 56" fill="none" aria-hidden="true"><path d="M24 6a7 7 0 1 0 0 14 7 7 0 0 0 0-14Z" stroke="currentColor" stroke-width="1.8"/><path d="M8 48V36c0-6.5 5.3-11.8 11.8-11.8h8.4C34.7 24.2 40 29.5 40 36v12M16 48v-8M32 48v-8" stroke="currentColor" stroke-width="1.8"/></svg>
+              </div>
+              <div>
+                <div class="stat-number">7<span>+</span></div>
+                <div class="stat-label">Спикеров</div>
+              </div>
+            </div>
+            <div class="stat">
+              <div class="stat-icon">
+                <svg viewBox="0 0 107 56" fill="none" aria-hidden="true"><path d="M53.5 7a8 8 0 1 0 0 16 8 8 0 0 0 0-16Z" stroke="currentColor" stroke-width="1.8"/><path d="M35 50V39c0-6.1 5-11 11-11h15c6.1 0 11 4.9 11 11v11M44 50v-8M63 50v-8" stroke="currentColor" stroke-width="1.8"/><path d="M28 15a6 6 0 1 0 0 12 6 6 0 0 0 0-12ZM13 50v-8c0-5 4-9 9-9h10M79 15a6 6 0 1 1 0 12 6 6 0 0 1 0-12ZM94 50v-8c0-5-4-9-9-9H75" stroke="currentColor" stroke-width="1.8"/></svg>
+              </div>
+              <div>
+                <div class="stat-number"><span class="!text-[20px] !font-bold">до</span>250</div>
+                <div class="stat-label">Участников</div>
+              </div>
+            </div>
+            <div class="stat">
+              <div class="stat-icon">
+                <svg viewBox="0 0 56 56" fill="none" aria-hidden="true"><path d="M13 20h30a4 4 0 0 1 4 4v18a6 6 0 0 1-6 6H15a6 6 0 0 1-6-6V24a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="1.8"/><path d="M21 20v-4a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v4M9 29l17 6h4l17-6M24 33h8v7h-8z" stroke="currentColor" stroke-width="1.8"/></svg>
+              </div>
+              <div>
+                <div class="stat-number">10<span>+</span></div>
+                <div class="stat-label">Реальных<br />кейсов</div>
+              </div>
+            </div>
+            <div class="stat">
+              <div class="stat-icon">
+                <svg viewBox="0 0 56 56" fill="none" aria-hidden="true"><circle cx="28" cy="28" r="19" stroke="currentColor" stroke-width="1.8"/><path d="M28 16v13l8 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+              <div>
+                <div class="stat-number">6<span>+</span></div>
+                <div class="stat-label">Часов<br />контента</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="partners" class="partners">
+        <div class="container-f">
+          <div class="partner-layout">
+            <div class="partners-top">
+              <div class="partners-heading">
+                <div>
+                  <h2 class="h2 uppercase">Партнёры <br />форума</h2>
+                  <div class="rule mt-[21px]"></div>
+                </div>
+                <p class="partners-copy">Компании, которые поддерживают развитие AI и деловой среды вместе с нами.</p>
+              </div>
+              <div class="general-partner">
+                <p class="general-label">Генеральный партнёр</p>
+                <div class="general-card">
+                  <img src="https://www.figma.com/api/mcp/asset/ae9e63cf-e277-4e51-a6f2-41b152415ff8" alt="Ваша компания" />
+                </div>
+              </div>
+            </div>
+
+            <div class="partner-logos">
+              <div class="partner-logo-grid">
+                <div class="partner-logo"><img src="https://www.figma.com/api/mcp/asset/5ef6b1ef-5c02-481f-9488-6b689589e831" alt="Avacada" /></div>
+                <div class="partner-logo"><img src="https://www.figma.com/api/mcp/asset/df77f117-ec9e-42f5-b715-5fd9a75538ab" alt="Gigma AI" /></div>
+                <div class="partner-logo"><img src="https://www.figma.com/api/mcp/asset/ae9e63cf-e277-4e51-a6f2-41b152415ff8" alt="Ваша компания" /></div>
+                <div class="partner-logo"><img src="https://www.figma.com/api/mcp/asset/ae9e63cf-e277-4e51-a6f2-41b152415ff8" alt="Ваша компания" /></div>
+                <div class="partner-logo"><img src="https://www.figma.com/api/mcp/asset/ae9e63cf-e277-4e51-a6f2-41b152415ff8" alt="Ваша компания" /></div>
+                <div class="partner-logo"><img src="https://www.figma.com/api/mcp/asset/ae9e63cf-e277-4e51-a6f2-41b152415ff8" alt="Ваша компания" /></div>
+                <div class="partner-logo"><img src="https://www.figma.com/api/mcp/asset/ae9e63cf-e277-4e51-a6f2-41b152415ff8" alt="Ваша компания" /></div>
+                <div class="partner-logo"><img src="https://www.figma.com/api/mcp/asset/ae9e63cf-e277-4e51-a6f2-41b152415ff8" alt="Ваша компания" /></div>
+              </div>
+              <button class="show-all" type="button">Показать все <span aria-hidden="true">⌄</span></button>
+            </div>
+
+            <div class="partners-cta">
+              <img class="partners-cta-icon" src="https://www.figma.com/api/mcp/asset/c9ec45fb-ab9b-4f9c-a818-5583f1091e02" alt="" />
+              <div class="partners-cta-body">
+                <p class="partners-cta-title">Хотите представить бренд на форуме?</p>
+                <div class="partners-cta-row">
+                  <img class="partners-cta-check" src="https://www.figma.com/api/mcp/asset/f435c6b0-7ce0-4b69-b0dc-f226d3054e7f" alt="" />
+                  <p class="partners-cta-text">Партнёрские интеграции, зона бренда, коммуникации с аудиторией.</p>
+                </div>
+              </div>
+              <a class="btn btn-gold" href="#faq">Стать партнёром <span class="arrow" aria-hidden="true"></span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="speakers" class="experts-section">
+        <div class="container-f">
+          <div class="experts-wrap">
+            <div class="experts-head">
+              <div class="experts-title">
+                <p class="experts-kicker">Экспертиза</p>
+                <div>
+                  <h2 class="h2">Эксперты индустрии</h2>
+                  <div class="rule mt-[21px]"></div>
+                </div>
+              </div>
+              <p class="experts-copy">Мы постоянно увеличиваем список тем и экспертов, следите за изменениями.</p>
+            </div>
+            <div class="expert-grid">
+              <article class="expert-card">
+                <picture class="expert-image">
+                  <source media="(max-width: 767px)" srcset="https://www.figma.com/api/mcp/asset/41c2265b-1fc6-4592-a6f6-bb78103d6704" />
+                  <source media="(max-width: 1279px)" srcset="https://www.figma.com/api/mcp/asset/00ac7103-625d-4270-9f44-5145061edc9f" />
+                  <img src="https://www.figma.com/api/mcp/asset/09545275-3ac6-49f1-90ec-fe43d98c30d4" alt="Светлана Федорова" />
+                </picture>
+                <div class="expert-body">
+                  <div class="expert-badge">Эксперт</div>
+                  <div class="expert-meta">
+                    <h3 class="expert-name">Светлана Федорова</h3>
+                    <p class="expert-role">Регионы XXI век</p>
+                  </div>
+                  <p class="expert-topic">Мировые тренды: каких технологий в России пока нет</p>
+                </div>
+              </article>
+              <article class="expert-card">
+                <picture class="expert-image">
+                  <source media="(max-width: 767px)" srcset="https://www.figma.com/api/mcp/asset/873a4170-d2f2-487e-84cd-6c4c0b23a6eb" />
+                  <source media="(max-width: 1279px)" srcset="https://www.figma.com/api/mcp/asset/e1cf6fe9-712d-47cd-92fd-8a1d8be2da76" />
+                  <img src="https://www.figma.com/api/mcp/asset/2af4de12-7764-40db-adbe-20ff8f4a78f5" alt="Бызин" />
+                </picture>
+                <div class="expert-body">
+                  <div class="expert-badge">Эксперт</div>
+                  <div class="expert-meta">
+                    <h3 class="expert-name">Бызин</h3>
+                    <p class="expert-role">CEO, AVACADA</p>
+                  </div>
+                  <p class="expert-topic">Улучшаем качество обслуживания в ритейле с помощью ML видеоаналитики</p>
+                </div>
+              </article>
+              <article class="expert-card">
+                <picture class="expert-image">
+                  <source media="(max-width: 767px)" srcset="https://www.figma.com/api/mcp/asset/06c5664f-a3cc-494b-aaf3-6d6868a0895b" />
+                  <source media="(max-width: 1279px)" srcset="https://www.figma.com/api/mcp/asset/dbfb2e88-c439-4ea7-bae1-af24c1220843" />
+                  <img src="https://www.figma.com/api/mcp/asset/8d1d6332-bfb1-4402-88b2-6a9964d05ff4" alt="Артем Полищук" />
+                </picture>
+                <div class="expert-body">
+                  <div class="expert-badge">Эксперт</div>
+                  <div class="expert-meta">
+                    <h3 class="expert-name">Артем Полищук</h3>
+                    <p class="expert-role">CEO, GIGMA_AI</p>
+                  </div>
+                  <p class="expert-topic">Как увеличить эффективность e-commerce с помощью ИИ-ассистентов</p>
+                </div>
+              </article>
+              <article class="expert-card">
+                <picture class="expert-image">
+                  <source media="(max-width: 767px)" srcset="https://www.figma.com/api/mcp/asset/75efa067-2eb1-40de-bec3-3b29f7fe64b4" />
+                  <source media="(max-width: 1279px)" srcset="https://www.figma.com/api/mcp/asset/eac8aee2-2440-488b-84dc-12f975fe6763" />
+                  <img src="https://www.figma.com/api/mcp/asset/9fd2a0d4-74d0-49f9-b405-4c6f01f1b4b6" alt="Алексей Снегирев" />
+                </picture>
+                <div class="expert-body">
+                  <div class="expert-badge">Эксперт</div>
+                  <div class="expert-meta">
+                    <h3 class="expert-name">Алексей Снегирев</h3>
+                    <p class="expert-role">CTO, aIDATA</p>
+                  </div>
+                  <p class="expert-topic">Внедрение корпоративных LLM-моделей с учетом безопасности</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="topics" class="topics-section">
+        <div class="container-f">
+          <div class="topics-wrap">
+            <div class="topics-head">
+              <div class="topics-title">
+                <div class="topics-title-main">
+                  <h2 class="h2 uppercase">Темы форума</h2>
+                  <div class="rule"></div>
+                </div>
+                <p class="topics-copy">Основной пул вопросов для конференции</p>
+              </div>
+              <div class="topics-spacer" aria-hidden="true"></div>
+            </div>
+            <div class="topics-grid">
+              <a class="topic" href="#tickets">Мировые тренды: каких технологий в России пока нет <span class="topic-chevron" aria-hidden="true">›</span></a>
+              <a class="topic" href="#tickets">С чего начать внедрение AI и как оценить результат? <span class="topic-chevron" aria-hidden="true">›</span></a>
+              <a class="topic" href="#tickets">Снижаем затраты на обработку лида (AI помошники) <span class="topic-chevron" aria-hidden="true">›</span></a>
+              <a class="topic" href="#tickets">Улучшаем качество обслуживания в ритейле с помощью ML видеоналитики <span class="topic-chevron" aria-hidden="true">›</span></a>
+              <a class="topic" href="#tickets">Как избежать дефицита или избытка товара с помощь ИИ <span class="topic-chevron" aria-hidden="true">›</span></a>
+              <a class="topic" href="#tickets">Вопросы безопасности <span class="topic-chevron" aria-hidden="true">›</span></a>
+              <a class="topic" href="#tickets">Как AI увеличивает средний чек и снижает возвраты в ритейле <span class="topic-chevron" aria-hidden="true">›</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tickets" class="pricing-section">
+        <div class="container-f">
+          <div class="pricing-wrap">
+            <div class="pricing-head">
+              <div class="pricing-intro">
+                <div class="pricing-title-stack">
+                  <p class="pricing-kicker">Тарифы</p>
+                  <h2 class="h2">Выберете оптимальный <br />формат участия</h2>
+                </div>
+                <p class="pricing-copy">Каждый тариф даёт доступ к широким возможностям форума и создан для максимальной пользы</p>
+              </div>
+              <div class="pricing-timer" aria-label="До повышения цен осталось">
+                <span class="pricing-timer-label">До повышения цен осталось:</span>
+                <span class="pricing-timer-value">07 : 21 : 25 : 47</span>
+              </div>
+            </div>
+
+            <div class="pricing-plans">
+              <article class="pricing-card">
+                <div class="pricing-card-main">
+                  <h3 class="pricing-card-title">Базовый</h3>
+                  <p class="pricing-card-subtitle">В стоимость входит</p>
+                  <div class="pricing-features">
+                    <div class="pricing-feature-list">
+                      <p class="pricing-feature"><img src="https://www.figma.com/api/mcp/asset/4f85612d-c9cf-4475-ae20-1ff175fe9382" alt="" />Доступ ко всем выступлениям</p>
+                      <p class="pricing-feature"><img src="https://www.figma.com/api/mcp/asset/4f85612d-c9cf-4475-ae20-1ff175fe9382" alt="" />Участие в общей программе</p>
+                      <p class="pricing-feature"><img src="https://www.figma.com/api/mcp/asset/4f85612d-c9cf-4475-ae20-1ff175fe9382" alt="" />Общий чат участников</p>
+                      <p class="pricing-feature"><img src="https://www.figma.com/api/mcp/asset/4f85612d-c9cf-4475-ae20-1ff175fe9382" alt="" />Кофе-брейки</p>
+                      <p class="pricing-feature"><img src="https://www.figma.com/api/mcp/asset/4f85612d-c9cf-4475-ae20-1ff175fe9382" alt="" />Доступ в партнёрскую зону</p>
+                    </div>
+                    <div class="pricing-rule"></div>
+                  </div>
+                </div>
+                <p class="pricing-price">7 000 ₽</p>
+                <a class="pricing-btn" href="#">Выбрать тариф</a>
+              </article>
+
+              <article class="pricing-card is-popular">
+                <div class="popular-pill">ПОПУЛЯРНЫЙ</div>
+                <div class="pricing-card-main">
+                  <h3 class="pricing-card-title">Бизнес</h3>
+                  <p class="pricing-card-subtitle">Всё из тарифа «БАЗОВЫЙ», плюс:</p>
+                  <div class="pricing-features">
+                    <div class="pricing-feature-list">
+                      <p class="pricing-feature"><img src="https://www.figma.com/api/mcp/asset/4f85612d-c9cf-4475-ae20-1ff175fe9382" alt="" />Места ближе к сцене</p>
+                      <p class="pricing-feature"><img src="https://www.figma.com/api/mcp/asset/4f85612d-c9cf-4475-ae20-1ff175fe9382" alt="" />Приоритетная регистрация <br />(без очередей)</p>
+                      <p class="pricing-feature"><img src="https://www.figma.com/api/mcp/asset/4f85612d-c9cf-4475-ae20-1ff175fe9382" alt="" />Доступ к материалам форума (презентации)</p>
+                      <p class="pricing-feature"><img src="https://www.figma.com/api/mcp/asset/4f85612d-c9cf-4475-ae20-1ff175fe9382" alt="" />Выделенный нетворкинг-блок (отдельная сессия для бизнес/VIP)</p>
+                    </div>
+                    <div class="pricing-rule"></div>
+                  </div>
+                </div>
+                <p class="pricing-price">12 000 ₽</p>
+                <a class="pricing-btn" href="#">Выбрать тариф</a>
+              </article>
+
+              <article class="pricing-card">
+                <div class="pricing-card-main">
+                  <h3 class="pricing-card-title">VIP</h3>
+                  <p class="pricing-card-subtitle">Всё из тарифа «Бизнес», плюс:</p>
+                  <div class="pricing-features">
+                    <div class="pricing-feature-list">
+                      <p class="pricing-feature"><img src="https://www.figma.com/api/mcp/asset/4f85612d-c9cf-4475-ae20-1ff175fe9382" alt="" />Лучшие места (первые ряды)</p>
+                      <p class="pricing-feature"><img src="https://www.figma.com/api/mcp/asset/4f85612d-c9cf-4475-ae20-1ff175fe9382" alt="" />Доступ в VIP-зону</p>
+                      <p class="pricing-feature"><img src="https://www.figma.com/api/mcp/asset/4f85612d-c9cf-4475-ae20-1ff175fe9382" alt="" />Закрытый ужин с участниками и спикерами</p>
+                      <p class="pricing-feature"><img src="https://www.figma.com/api/mcp/asset/4f85612d-c9cf-4475-ae20-1ff175fe9382" alt="" />Модерируемые знакомства (помощь в установлении полезных контактов)</p>
+                    </div>
+                    <div class="pricing-rule"></div>
+                  </div>
+                </div>
+                <p class="pricing-price">20 000 ₽</p>
+                <a class="pricing-btn" href="#">Выбрать тариф</a>
+              </article>
+            </div>
+
+            <div class="pricing-help">
+              <div class="pricing-help-copy">
+                <img src="https://www.figma.com/api/mcp/asset/708a3822-45cb-40bd-a583-b91048db1b24" alt="" />
+                <p>Напишите — подскажем, какой формат подойдёт именно вам.</p>
+              </div>
+              <a class="pricing-btn" href="#faq">Написать в чат</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="team" class="team-section">
+        <div class="container-f">
+          <div class="team-wrap">
+            <div class="team-head">
+              <h2 class="h2 uppercase">Команда форума</h2>
+              <div class="rule"></div>
+              <p class="team-copy">Эти люди внесли незаменимый вклад с создание форума</p>
+            </div>
+            <div class="team-grid">
+              <article class="team-item team-julia">
+                <picture class="team-photo">
+                  <source media="(max-width: 767px)" srcset="https://www.figma.com/api/mcp/asset/d9a00f1d-b669-4789-b2b2-dc49872b9f4c" />
+                  <source media="(max-width: 1279px)" srcset="https://www.figma.com/api/mcp/asset/d3964d93-a500-40a8-90e1-df066dbd3905" />
+                  <img src="https://www.figma.com/api/mcp/asset/97ee1b89-c910-4dad-9900-1399e0f6cd52" alt="Юлия Малышева" />
+                </picture>
+                <div class="team-info">
+                  <h3 class="team-name">Юлия Малышева</h3>
+                  <p class="team-role">Организатор</p>
+                  <p class="team-company">Company</p>
+                </div>
+              </article>
+              <article class="team-item team-dmitry">
+                <picture class="team-photo">
+                  <source media="(max-width: 767px)" srcset="https://www.figma.com/api/mcp/asset/bc995bdb-bfc9-4414-9ed8-04774c7ae457" />
+                  <source media="(max-width: 1279px)" srcset="https://www.figma.com/api/mcp/asset/7ac6283a-fa22-429d-ae06-d0a0cdfd7021" />
+                  <img src="https://www.figma.com/api/mcp/asset/691cce7d-94b6-4c49-8775-33d2b07d7924" alt="Дмитрий Бызин" />
+                </picture>
+                <div class="team-info">
+                  <h3 class="team-name">Дмитрий Бызин</h3>
+                  <p class="team-role">Программный директор</p>
+                  <p class="team-company">Avacada</p>
+                </div>
+              </article>
+              <article class="team-item team-artem">
+                <picture class="team-photo">
+                  <source media="(max-width: 767px)" srcset="https://www.figma.com/api/mcp/asset/7966a8da-c202-4bca-b406-31cd329b1478" />
+                  <source media="(max-width: 1279px)" srcset="https://www.figma.com/api/mcp/asset/2511df67-3208-4c5f-b9da-759b4a836fab" />
+                  <img src="https://www.figma.com/api/mcp/asset/fb8562b2-b26b-4981-aa4a-cee54c83a807" alt="Артём Полищук" />
+                </picture>
+                <div class="team-info">
+                  <h3 class="team-name">Артём Полищук</h3>
+                  <p class="team-role">Арт директор</p>
+                  <p class="team-company">Gigma</p>
+                </div>
+              </article>
+              <article class="team-item team-alexander">
+                <picture class="team-photo">
+                  <source media="(max-width: 767px)" srcset="https://www.figma.com/api/mcp/asset/8ac01e01-3a7d-4f72-8f14-37973f99c6e0" />
+                  <source media="(max-width: 1279px)" srcset="https://www.figma.com/api/mcp/asset/249b554f-25fd-457d-97b2-9ea97f632cf6" />
+                  <img src="https://www.figma.com/api/mcp/asset/544bf5d2-dd59-49f2-ab78-8b84d435b37e" alt="Александр Карпович" />
+                </picture>
+                <div class="team-info">
+                  <h3 class="team-name">Александр Карпович</h3>
+                  <p class="team-role">Бренд-менеджер</p>
+                  <p class="team-company">ITDesign</p>
+                </div>
+              </article>
+              <article class="team-item team-alexey">
+                <picture class="team-photo">
+                  <source media="(max-width: 767px)" srcset="https://www.figma.com/api/mcp/asset/6cc6d9e4-4953-4a81-853f-dbc3d53bef6d" />
+                  <source media="(max-width: 1279px)" srcset="https://www.figma.com/api/mcp/asset/6f3ac44b-7fc8-48cb-8f00-2e026bff6c7c" />
+                  <img src="https://www.figma.com/api/mcp/asset/dda6fb35-2750-42c5-8b9a-ffc673c448fe" alt="Алексей Снегирев" />
+                </picture>
+                <div class="team-info">
+                  <h3 class="team-name">Алексей Снегирев</h3>
+                  <p class="team-role">Технический лидер</p>
+                  <p class="team-company">aIDATA</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="faq-section">
+        <div class="container-f">
+          <div class="faq-wrap">
+            <h2 class="faq-title">Вопросы и ответы</h2>
+            <div class="faq-list faq-desktop-list">
+              <details class="faq-item" open>
+                <summary>Где и&nbsp;когда? <span class="faq-arrow" aria-hidden="true"></span></summary>
+                <div class="faq-answer">
+                  <p>Индустрия AI пройдет 18 июня 2026 года в Новосибирске, отель Гранд Афтограф</p>
+                  <p>Программа мероприятия в подробностях появится на сайте в апреле. Спикеров начнём публиковать с февраля там же на сайте.</p>
+                </div>
+              </details>
+              <details class="faq-item" open>
+                <summary>Это платно? <span class="faq-arrow" aria-hidden="true"></span></summary>
+                <div class="faq-answer">
+                  <p>Да, участие платное. Доступны несколько форматов участия: Базовый, Бизнес и VIP.</p>
+                  <p>Каждый тариф включает доступ к программе форума, а расширенные тарифы дают дополнительные возможности: лучшие места, приоритетную регистрацию, нетворкинг и закрытые форматы общения.</p>
+                </div>
+              </details>
+              <details class="faq-item" open>
+                <summary>Как зарегистрироваться? <span class="faq-arrow" aria-hidden="true"></span></summary>
+                <div class="faq-answer">
+                  <p>Выберите подходящий тариф на сайте и нажмите кнопку «Купить билет» или «Выбрать тариф».</p>
+                </div>
+              </details>
+              <details class="faq-item" open>
+                <summary>Оплата частями для физлиц <span class="faq-arrow" aria-hidden="true"></span></summary>
+                <div class="faq-answer">
+                  <p>Да, для физических лиц возможна оплата частями, если такой способ доступен на стороне платёжного сервиса.</p>
+                  <p>&nbsp;</p>
+                  <p>При оформлении билета выберите удобный способ оплаты. Если возникнут сложности, напишите организаторам — мы подскажем, как лучше оформить участие.</p>
+                </div>
+              </details>
+              <details class="faq-item" open>
+                <summary>Как оплатить юрлицам? <span class="faq-arrow" aria-hidden="true"></span></summary>
+                <div class="faq-answer">
+                  <p>Юридические лица могут оплатить участие по счёту.</p>
+                  <p>&nbsp;</p>
+                  <p>Напишите нам на почту или в Telegram, укажите количество участников, выбранный тариф и реквизиты компании. Мы подготовим счёт и необходимые документы.</p>
+                </div>
+              </details>
+              <details class="faq-item" open>
+                <summary>Как оплатить за коллег одним счётом? <span class="faq-arrow" aria-hidden="true"></span></summary>
+                <div class="faq-answer">
+                  <p>Да, можно оплатить участие нескольких сотрудников одним счётом.</p>
+                  <p>&nbsp;</p>
+                  <p>Пришлите список участников, их email-адреса, выбранные тарифы и реквизиты компании. Мы сформируем один общий счёт на оплату.</p>
+                </div>
+              </details>
+              <details class="faq-item" open>
+                <summary>Хотим заключить договор, иначе не оплатим <span class="faq-arrow" aria-hidden="true"></span></summary>
+                <div class="faq-answer">
+                  <p>Мы можем подготовить договор для вашей компании.</p>
+                  <p>Напишите организаторам, укажите реквизиты, количество участников и выбранные тарифы. После согласования подготовим договор и счёт.</p>
+                </div>
+              </details>
+              <details class="faq-item" open>
+                <summary>Скидки на самолёт и проживание <span class="faq-arrow" aria-hidden="true"></span></summary>
+                <div class="faq-answer">
+                  <p>Информация о партнёрских условиях на перелёт и проживание будет опубликована дополнительно.</p>
+                  <p>Если специальные условия появятся, мы добавим их на сайт и сообщим участникам в рассылке или Telegram-канале.</p>
+                </div>
+              </details>
+              <details class="faq-item" open>
+                <summary>Как стать партнёром? Стенд поставить и вот это всё? <span class="faq-arrow" aria-hidden="true"></span></summary>
+                <div class="faq-answer">
+                  <p>Напишите нам, если хотите представить бренд на форуме.</p>
+                  <p>Мы обсудим подходящий формат: партнёрский пакет, стенд, бренд-зону, выступление, интеграции в коммуникации или другие варианты присутствия на площадке.</p>
+                </div>
+              </details>
+              <details class="faq-item" open>
+                <summary>Хочу выступить с докладом <span class="faq-arrow" aria-hidden="true"></span></summary>
+                <div class="faq-answer">
+                  <p>Отправьте тему доклада, краткое описание, информацию о себе и компании.</p>
+                  <p>&nbsp;</p>
+                  <p>Программный комитет рассмотрит заявку и свяжется с вами, если тема подойдёт программе форума.</p>
+                </div>
+              </details>
+            </div>
+            <div class="faq-list faq-mobile-list">
+              <details class="faq-item" open>
+                <summary>Где и&nbsp;когда? <span class="faq-arrow" aria-hidden="true"></span></summary>
+                <div class="faq-answer">
+                  <p>Индустрия AI пройдет 18 июня 2026 года в Новосибирске, отель Гранд Афтограф</p>
+                  <p>Программа мероприятия в подробностях появится на сайте в апреле. Спикеров начнём публиковать с февраля там же на сайте.</p>
+                </div>
+              </details>
+              <details class="faq-item" open>
+                <summary>Это платно? <span class="faq-arrow" aria-hidden="true"></span></summary>
+                <div class="faq-answer">
+                  <p>Да, участие платное. Доступны несколько форматов участия: Базовый, Бизнес и VIP.</p>
+                  <p>Каждый тариф включает доступ к программе форума, а расширенные тарифы дают дополнительные возможности: лучшие места, приоритетную регистрацию, нетворкинг и закрытые форматы общения.</p>
+                </div>
+              </details>
+              <details class="faq-item" open>
+                <summary>Как зарегистрироваться? <span class="faq-arrow" aria-hidden="true"></span></summary>
+                <div class="faq-answer">
+                  <p>Да, участие платное. Доступны несколько форматов участия: Базовый, Бизнес и VIP.</p>
+                  <p>Каждый тариф включает доступ к программе форума, а расширенные тарифы дают дополнительные возможности: лучшие места, приоритетную регистрацию, нетворкинг и закрытые форматы общения.</p>
+                </div>
+              </details>
+              <details class="faq-item"><summary>Это платно? <span class="faq-arrow" aria-hidden="true"></span></summary></details>
+              <details class="faq-item"><summary>Как зарегистрироваться? <span class="faq-arrow" aria-hidden="true"></span></summary></details>
+              <details class="faq-item"><summary>Оплата частями для физлиц <span class="faq-arrow" aria-hidden="true"></span></summary></details>
+              <details class="faq-item"><summary>Как оплатить юрлицам? <span class="faq-arrow" aria-hidden="true"></span></summary></details>
+              <details class="faq-item"><summary>Как оплатить за&nbsp;коллег одним счётом? <span class="faq-arrow" aria-hidden="true"></span></summary></details>
+              <details class="faq-item"><summary>Хотим заключить договор, иначе не&nbsp;оплатим <span class="faq-arrow" aria-hidden="true"></span></summary></details>
+              <details class="faq-item"><summary>Скидки на&nbsp;самолет и&nbsp;проживание <span class="faq-arrow" aria-hidden="true"></span></summary></details>
+              <details class="faq-item"><summary>Как стать партнёром? Стенд поставить и&nbsp;вот это всё? <span class="faq-arrow" aria-hidden="true"></span></summary></details>
+              <details class="faq-item"><summary>Хочу выступить с&nbsp;докладом <span class="faq-arrow" aria-hidden="true"></span></summary></details>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer section-tight">
+      <div class="container-f">
+        <div class="footer-main">
+          <div class="footer-tablet-row">
+            <div class="footer-col">
+              <p class="footer-title">18 июня</p>
+              <p class="footer-place">Отель Grand Autograf. Новосибирск, Красный проспект 65</p>
+              <a class="btn btn-white" href="#tickets">Купить билет <span class="arrow" aria-hidden="true"></span></a>
+              <div class="socials footer-socials-main" aria-label="Социальные сети">
+                <a class="social social-tg" href="#" aria-label="Telegram"></a>
+                <a class="social social-vk" href="#" aria-label="ВКонтакте"></a>
+                <a class="social social-yt" href="#" aria-label="YouTube"></a>
+              </div>
+            </div>
+          </div>
+          <div class="footer-contact-grid">
+            <div class="footer-col">
+              <p class="footer-title">Контакты</p>
+              <div class="contact-list">
+                <p><span>Эл. почта:</span> <span>org@forum-industry.ru</span></p>
+                <p><span>Телеграм-личка:</span> <span>@forum-industry.ru</span></p>
+                <p><span>Телеграм-чат:</span> <span>@forum-industry.ru</span></p>
+              </div>
+              <div class="socials footer-socials-contact" aria-label="Социальные сети">
+                <a class="social social-tg" href="#" aria-label="Telegram"></a>
+                <a class="social social-vk" href="#" aria-label="ВКонтакте"></a>
+                <a class="social social-yt" href="#" aria-label="YouTube"></a>
+              </div>
+            </div>
+            <div class="footer-col">
+              <p class="footer-title">Партнёрам</p>
+              <div class="contact-list">
+                <p><span>Эл. почта:</span> <span>partner@forum-industry.ru</span></p>
+                <p><span>Телеграм:</span> <span>@forum-industry.ru</span></p>
+              </div>
+            </div>
+            <div class="footer-col">
+              <p class="footer-title">Спикерам</p>
+              <div class="contact-list">
+                <p><span>Эл. почта:</span> <span>org@forum-industry.ru</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-sep"></div>
+        <div class="footer-bottom">
+          <div class="footer-col"><p class="copyright">©2026 Индустрия AI</p></div>
+          <div class="footer-col"><a href="#">Публичная оферта</a><a href="#">Пользовательское соглашение</a></div>
+          <div class="footer-col"><a href="#">Политика конфиденциальности</a><a href="#">Нормы поведения</a></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

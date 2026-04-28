@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Пользовательское соглашение</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --gold: #e7b962;
+        --orange: #ffa800;
+        --container: 1440px;
+        --page-x: 64px;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-width: 360px;
+        background: #000;
+        color: #fff;
+        font-family: "Roboto", Arial, sans-serif;
+        font-variation-settings: "wdth" 100;
+      }
+
+      a, button { color: inherit; font: inherit; }
+      a { text-decoration: none; }
+      button { border: 0; cursor: pointer; }
+
+      .page { min-height: 100vh; background: #000; }
+
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 20;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 24px var(--page-x) 12px;
+      }
+
+      .header-inner {
+        max-width: 1920px;
+        margin: 0 auto;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 32px;
+      }
+
+      .logo {
+        height: 40px;
+        display: inline-flex;
+        align-items: center;
+        gap: 7.857px;
+        font-size: 22.857px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .logo-mark {
+        width: 40px;
+        height: 40px;
+        display: grid;
+        place-items: center;
+        background: var(--gold);
+        color: #000;
+        font-family: Arial, sans-serif;
+        font-weight: 700;
+      }
+
+      .nav-wrap {
+        display: flex;
+        align-items: center;
+        gap: 80px;
+        flex-shrink: 0;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 24px;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 25.14px;
+        white-space: nowrap;
+      }
+
+      .nav a { transition: color 180ms ease, font-weight 180ms ease; }
+      .nav a:hover, .nav a:focus-visible { color: var(--orange); font-weight: 600; }
+
+      .btn {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 13px 23px;
+        border-radius: 5px;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 18px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        transition: background-color 180ms ease, color 180ms ease;
+      }
+
+      .btn-white { background: #fff; color: #000; }
+      .btn-dark { background: transparent; color: #fff; }
+      .btn-white:hover { background: var(--orange); }
+      .btn-dark:hover { color: rgba(255, 255, 255, 0.5); }
+
+      .arrow {
+        width: 8px;
+        height: 18px;
+        flex: 0 0 8px;
+        background: currentColor;
+        -webkit-mask: url("data:image/svg+xml,%3Csvg width='8' height='16' viewBox='0 0 8 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 1L1 8L7 15' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 8px 16px no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg width='8' height='16' viewBox='0 0 8 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 1L1 8L7 15' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 8px 16px no-repeat;
+        transform: rotate(180deg);
+      }
+
+      .menu-button {
+        width: 50px;
+        height: 50px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 0 11px;
+        border: 1px solid var(--orange);
+        border-radius: 16px;
+        background: #000;
+      }
+
+      .menu-lines,
+      .menu-lines::before,
+      .menu-lines::after {
+        display: block;
+        width: 23px;
+        height: 2px;
+        border-radius: 2px;
+        background: var(--gold);
+      }
+
+      .menu-lines { position: relative; }
+      .menu-lines::before, .menu-lines::after { content: ""; position: absolute; left: 0; }
+      .menu-lines::before { top: -8px; }
+      .menu-lines::after { top: 8px; }
+
+      .agreement-main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden auto;
+        padding: 100px 64px;
+      }
+
+      .back-row {
+        width: 1288px;
+        max-width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      .back-link {
+        height: 60px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding-block: 6px;
+        border-radius: 8px;
+        color: #fff;
+        font-family: "Manrope", sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      .back-icon {
+        width: 20px;
+        height: 20px;
+        position: relative;
+      }
+
+      .back-icon::before {
+        content: "";
+        position: absolute;
+        inset: 4px 7px 4px 6px;
+        background: #fff;
+        -webkit-mask: url("data:image/svg+xml,%3Csvg width='8' height='16' viewBox='0 0 8 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 1L1 8L7 15' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg width='8' height='16' viewBox='0 0 8 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 1L1 8L7 15' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+      }
+
+      .agreement-frame {
+        width: 100%;
+        max-width: var(--container);
+        display: flex;
+        justify-content: center;
+        padding: 40px 64px;
+      }
+
+      .agreement-content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 48px;
+      }
+
+      .agreement-title {
+        margin: 0;
+        width: 100%;
+        color: #fff;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 56px;
+      }
+
+      .offer-box {
+        width: 100%;
+        border: 2px solid var(--orange);
+        border-radius: 16px;
+        background: rgba(0, 0, 0, 0.72);
+        padding: 40px 30px;
+      }
+
+      .offer-text {
+        margin: 0;
+        width: 100%;
+        color: #fff;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 36px;
+        white-space: normal;
+      }
+
+      .offer-text p { margin: 0; }
+      .offer-text p + p { margin-top: 4px; }
+      .offer-text .offer-section {
+        margin-top: 14px;
+        color: var(--gold);
+        font-weight: 500;
+      }
+      .offer-text .offer-section:first-child { margin-top: 0; }
+      .offer-text .offer-section + p { margin-top: 6px; }
+      .offer-text .offer-date { margin-top: 14px; }
+
+      .footer {
+        width: 100%;
+        background: #000;
+        padding: 64px 64px 48px;
+      }
+
+      .footer-inner {
+        max-width: var(--container);
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding-inline: 64px;
+      }
+
+      .footer-top,
+      .footer-bottom {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        width: 100%;
+      }
+
+      .footer-tablet-row,
+      .footer-contact-grid { display: contents; }
+
+      .footer-col {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding-inline: 12px;
+      }
+
+      .footer-date {
+        margin: 0;
+        color: #fff;
+        font-size: 28px;
+        font-weight: 400;
+        line-height: 36px;
+      }
+
+      .footer-place {
+        margin: 0;
+        color: var(--gold);
+        font-size: 20px;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      .socials {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        padding-top: 8px;
+      }
+
+      .social {
+        width: 32px;
+        height: 32px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--gold);
+        color: #000;
+        font-size: 0;
+        font-weight: 700;
+      }
+
+      .social::before { content: ""; display: block; background: currentColor; }
+      .social-tg::before {
+        width: 18px;
+        height: 16px;
+        -webkit-mask: url("data:image/svg+xml,%3Csvg width='18' height='16' viewBox='0 0 18 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.4.8 14.8 15c-.2.9-.7 1.1-1.4.7L9.5 12.8l-1.9 1.8c-.2.2-.4.4-.8.4l.3-4.1L14.7 4c.3-.3-.1-.4-.5-.1L4.8 9.8.8 8.5c-.9-.3-.9-.9.2-1.3L16.4.9c.7-.3 1.3.2 1 1Z'/%3E%3C/svg%3E") center / contain no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg width='18' height='16' viewBox='0 0 18 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.4.8 14.8 15c-.2.9-.7 1.1-1.4.7L9.5 12.8l-1.9 1.8c-.2.2-.4.4-.8.4l.3-4.1L14.7 4c.3-.3-.1-.4-.5-.1L4.8 9.8.8 8.5c-.9-.3-.9-.9.2-1.3L16.4.9c.7-.3 1.3.2 1 1Z'/%3E%3C/svg%3E") center / contain no-repeat;
+      }
+      .social-vk::before { content: "vk"; background: transparent; font-size: 13px; font-weight: 700; letter-spacing: -0.5px; text-transform: lowercase; }
+      .social-yt::before {
+        width: 16px;
+        height: 18px;
+        -webkit-mask: url("data:image/svg+xml,%3Csvg width='16' height='18' viewBox='0 0 16 18' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 7.3c1.3.8 1.3 2.6 0 3.4L3.8 17.2c-1.3.8-2.8-.2-2.8-1.7v-13C1 1 2.5.1 3.8.8L15 7.3Z'/%3E%3C/svg%3E") center / contain no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg width='16' height='18' viewBox='0 0 16 18' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 7.3c1.3.8 1.3 2.6 0 3.4L3.8 17.2c-1.3.8-2.8-.2-2.8-1.7v-13C1 1 2.5.1 3.8.8L15 7.3Z'/%3E%3C/svg%3E") center / contain no-repeat;
+      }
+
+      .footer-socials-contact { display: none; }
+
+      .footer-heading {
+        margin: 0;
+        color: #fff;
+        font-size: 28px;
+        font-weight: 400;
+        line-height: 28px;
+      }
+
+      .footer-list {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        color: #fff;
+        font-size: 18px;
+        line-height: normal;
+        white-space: nowrap;
+      }
+
+      .footer-list p { margin: 0; }
+      .footer-list span { color: var(--gold); font-weight: 500; }
+
+      .footer-sep {
+        width: 100%;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.25);
+      }
+
+      .footer-bottom { row-gap: 24px; }
+
+      .footer-small,
+      .footer-links {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 32px;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        color: var(--gold);
+        font-weight: 400;
+      }
+
+      @media (min-width: 1280px) {
+        .offer-box { width: 1284px; max-width: 100%; }
+      }
+
+      @media (max-width: 1279px) {
+        :root { --page-x: 32px; }
+        .header-inner { gap: 16px; }
+        .nav { display: none; }
+        .nav-wrap { gap: 16px; }
+        .menu-button { display: inline-flex; }
+
+        .agreement-main { padding: 100px 0; }
+        .back-row { display: none; }
+        .agreement-frame { padding: 40px 32px; }
+        .agreement-title { font-size: 36px; line-height: 56px; }
+        .offer-text { font-size: 22px; line-height: 34px; }
+
+        .footer-inner { padding-inline: 32px; }
+        .footer { border-top: 1px solid rgba(255, 255, 255, 0.25); padding-inline: 0; }
+        .footer-top { display: flex; flex-direction: column; gap: 24px; }
+        .footer-tablet-row { display: flex; align-items: center; width: 100%; }
+        .footer-tablet-row .footer-col {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto;
+          grid-template-areas: "date button" "place button" "socials socials";
+          align-items: end;
+          column-gap: 24px;
+          width: 100%;
+        }
+        .footer-tablet-row .footer-date { grid-area: date; }
+        .footer-tablet-row .footer-place { grid-area: place; font-size: 16px; line-height: 30px; }
+        .footer-tablet-row .btn { grid-area: button; }
+        .footer-contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; width: 100%; }
+        .footer-socials-main { display: none; }
+        .footer-socials-contact { display: flex; }
+        .footer-bottom { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; }
+      }
+
+      @media (max-width: 767px) {
+        :root { --page-x: 24px; }
+        .site-header { padding: 12px 12px 12px 24px; }
+        .max-link { display: none; }
+
+        .agreement-main { padding: 100px 0 40px; }
+        .agreement-frame { padding: 0 24px; }
+        .agreement-content { gap: 24px; }
+        .agreement-title { font-size: 24px; line-height: 32px; }
+        .offer-box { padding: 24px 16px; }
+        .offer-text { font-size: 16px; line-height: 24px; }
+        .offer-text p + p { margin-top: 4px; }
+        .offer-text .offer-section { margin-top: 12px; }
+        .offer-text .offer-section + p { margin-top: 5px; }
+        .offer-text .offer-date { margin-top: 12px; }
+
+        .footer { padding: 40px 0; }
+        .footer-inner { padding-inline: 32px; }
+        .footer-tablet-row,
+        .footer-contact-grid,
+        .footer-bottom {
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 36px;
+        }
+        .footer-col { padding-inline: 0; }
+        .footer-tablet-row .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-tablet-row .btn { width: 100%; }
+        .footer-date { line-height: normal; }
+        .footer-place, .footer-list { font-size: 16px; white-space: normal; }
+        .footer-heading { font-size: 18px; line-height: normal; }
+        .footer-socials-main { display: flex; justify-content: center; width: 100%; }
+        .footer-socials-contact { display: flex; }
+        .footer-small, .footer-links { line-height: 32px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <div class="header-inner">
+          <a class="logo" href="index.html" aria-label="Индустрия ИИ">
+            <span>Индустрия</span>
+            <span class="logo-mark">ИИ</span>
+          </a>
+          <div class="nav-wrap">
+            <nav class="nav" aria-label="Навигация">
+              <a href="index.html#about">О форуме</a>
+              <a href="index.html#partners">Партнёры</a>
+              <a href="index.html#topics">Программа</a>
+              <a href="index.html#tickets">Участвовать</a>
+              <a href="index.html#faq">Вопросы</a>
+            </nav>
+            <a class="btn btn-dark max-link" href="index.html#partners">Канал в max <span class="arrow" aria-hidden="true"></span></a>
+            <button class="menu-button" type="button" aria-label="Открыть меню"><span class="menu-lines" aria-hidden="true"></span></button>
+          </div>
+        </div>
+      </header>
+
+      <main class="agreement-main">
+        <div class="back-row">
+          <a class="back-link" href="registration.html"><span class="back-icon" aria-hidden="true"></span>Назад</a>
+        </div>
+        <section class="agreement-frame" aria-labelledby="agreement-title">
+          <div class="agreement-content">
+            <h1 class="agreement-title" id="agreement-title">Пользовательское соглашение</h1>
+            <div class="offer-box">
+              <div class="offer-text">
+                <p>Настоящий документ «Пользовательское соглашение» представляет собой предложение Индивидуального предпринимателя Малышевой Юлии Викторовны (далее — «Правообладатель») заключить договор на изложенных ниже условиях.</p>
+                <p class="offer-section">1. Общие положения</p>
+                <p>1.1. В настоящем документе и вытекающих или связанных с ним отношениях Сторон применяются следующие термины и определения:</p>
+                <p>а) Сервис — совокупность Сайта и размещённого на нём Контента, к которым Пользователям предоставляется доступ посредством использования Платформы в целях информационного обеспечения Форума.</p>
+                <p>б) Платформа — программно-аппаратные средства Правообладателя, интегрированные с Сайтом.</p>
+                <p>в) Сайт — автоматизированная информационная система, доступная в сети Интернет по адресу (включая поддомены): forum-industry.ru.</p>
+                <p>г) Пользователь — лицо, заключившее настоящее Соглашение с Правообладателем в своём или чужом интересе в соответствии с требованиями действующего законодательства и настоящего Соглашения.</p>
+                <p>д) Контент — любые информационные материалы, включая текстовые, графические, аудиовизуальные и прочие материалы, к которым можно получить доступ путём использования Сервиса.</p>
+                <p>е) Форум — проводимое Правообладателем мероприятие «Forum-Industry».</p>
+                <p>ж) Личный кабинет — персональный раздел Сайта, к которому Пользователь получает доступ после прохождения регистрации и/или авторизации в Сервисе. Личный кабинет предназначен для хранения персональной информации Пользователя, просмотра и управления доступными функциональными возможностями Сервиса.</p>
+                <p>1.2. В настоящем Соглашении могут использоваться иные термины и определения, не указанные в п. 1.1. В этом случае толкование термина производится в соответствии с текстом Соглашения. При отсутствии однозначного толкования следует руководствоваться: в первую очередь — Обязательными документами (п. 2.1), во вторую — законодательством Российской Федерации, далее — обычаями делового оборота и научной доктриной.</p>
+                <p>1.3. Использование Сервиса любым способом и в любой форме в пределах его объявленных функциональных возможностей, включая совокупность, а также осуществление хотя бы одного из следующих действий:</p>
+                <p>просмотр Контента с использованием Сервиса;</p>
+                <p>регистрация и/или авторизация в Сервисе;</p>
+                <p>оформление подписки на информационную рассылку;</p>
+                <p>направление заявки на участие в Форуме;</p>
+                <p>иное использование Сервиса,</p>
+                <p>— создаёт договор на условиях настоящего Соглашения и указанных в нём обязательных для Сторон документов в соответствии с положениями ст. 437 и 438 Гражданского кодекса Российской Федерации.</p>
+                <p>1.4. Воспользовавшись любой из указанных возможностей, вы подтверждаете, что:</p>
+                <p>а) Ознакомились с условиями настоящего Соглашения и указанных в нём Обязательных документов в полном объёме до начала использования Сервиса.</p>
+                <p>б) Принимаете все условия настоящего Соглашения без каких-либо изъятий и ограничений с вашей стороны и обязуетесь их соблюдать или прекратить использование Сервиса. Если вы не согласны с условиями Соглашения или не имеете права на заключение договора на их основе, вам следует незамедлительно прекратить любое использование Сервиса.</p>
+                <p>в) Соглашение (в том числе любая из его частей) и/или указанные в нём Обязательные документы могут быть изменены Правообладателем без специального уведомления. Новая редакция вступает в силу с момента её размещения на Сайте Правообладателя либо доведения до сведения Пользователя иным способом, если иное не предусмотрено новой редакцией.</p>
+                <p class="offer-section">2. Общие условия пользования Сервисом</p>
+                <p>2.1. Обязательным условием заключения настоящего Соглашения является полное и безоговорочное принятие Пользователем следующих документов («Обязательные документы»):</p>
+                <p>а) Политика конфиденциальности, размещённая на Сайте по адресу: forum-industry.ru/privacy — содержит правила предоставления и использования конфиденциальной информации, включая персональные данные Пользователя.</p>
+                <p>б) Публичная оферта, размещённая на Сайте по адресу: forum-industry.ru/oferta — является обязательным документом в случае подачи Пользователем заявки на участие в Форуме.</p>
+                <p>2.2. Просмотр Контента допускается без предварительной регистрации и/или авторизации. Остальные функциональные возможности Сервиса доступны только после прохождения Пользователем регистрации и/или авторизации в соответствии с правилами Правообладателя.</p>
+                <p>2.3. Перечень функциональных возможностей, требующих предварительной регистрации, определяется по усмотрению Правообладателя и может изменяться. В частности, после регистрации Пользователь вправе разместить информацию о себе, оформить подписку на информационную рассылку и подать заявку на участие в Форуме через Личный кабинет.</p>
+                <p>2.4. При регистрации Пользователь обязуется предоставлять достоверную и полную информацию и поддерживать её в актуальном состоянии. В случае если Правообладателю становится известно о предоставлении неверных или неполных данных, Правообладатель вправе заблокировать либо удалить Личный кабинет Пользователя, а также ограничить или прекратить доступ к Сервису.</p>
+                <p>2.5. Правообладатель вправе в любой момент потребовать от Пользователя подтверждения данных, указанных при регистрации, в том числе путём предоставления удостоверяющих документов. Непредоставление таких документов может быть приравнено к предоставлению недостоверных сведений и повлечь последствия, предусмотренные п. 2.4.</p>
+                <p>2.6. В случае несоответствия данных, указанных при регистрации, сведениям в представленных документах, Правообладатель вправе применить меры, указанные в п. 2.4.</p>
+                <p>2.7. Технические, организационные и коммерческие условия использования Сервиса могут доводиться до сведения Пользователей путём размещения на Сайте или путём направления уведомлений.</p>
+                <p>2.8. Правообладатель вправе устанавливать лимиты и вводить технические ограничения использования Сервиса, которые будут доводиться до сведения Пользователей в форме и способом по выбору Правообладателя.</p>
+                <p class="offer-section">3. Гарантии Пользователя</p>
+                <p>Принимая условия настоящего Соглашения, вы подтверждаете и гарантируете, что:</p>
+                <p>3.1. Вы обладаете всеми необходимыми правами и полномочиями для заключения настоящего Договора и его исполнения.</p>
+                <p>3.2. Использование Сервиса будет осуществляться вами исключительно для целей, разрешённых настоящим Соглашением, с соблюдением его положений, требований применимого права и общепринятой практики.</p>
+                <p>3.3. Вы не будете совершать действий, которые вступают в противоречие или препятствуют предоставлению Сервиса либо работе оборудования, сетей или программного обеспечения, посредством которых он предоставляется.</p>
+                <p>3.4. Использование вами Сервиса не нарушает имущественных и/или личных неимущественных прав третьих лиц, а равно запретов и ограничений, установленных применимым правом, включая авторские и смежные права, права на товарные знаки, знаки обслуживания, права на промышленные образцы и права на использование изображений людей.</p>
+                <p>3.5. Предоставляемые вами материалы не содержат сведений и/или образов, оскорбляющих честь, достоинство и деловую репутацию третьих лиц, а также информации, пропагандирующей насилие, порнографию, наркотики, расовую или национальную вражду.</p>
+                <p class="offer-section">4. Ограничения</p>
+                <p>Соглашаясь с условиями настоящего Соглашения, вы понимаете и признаёте, что:</p>
+                <p>4.1. К отношениям Сторон по предоставлению Сервиса на безвозмездной основе не подлежат применению положения законодательства о защите прав потребителей.</p>
+                <p>4.2. Сервис предоставляется на условиях «как есть». Правообладатель не предоставляет гарантий того, что Сервис будет соответствовать вашим требованиям; услуги будут предоставляться непрерывно и без ошибок; результаты использования Сервиса будут точными; качество Контента будет соответствовать вашим ожиданиям; все ошибки в программном обеспечении будут исправлены.</p>
+                <p>4.3. Форма и характер предоставляемых услуг могут меняться без предварительного уведомления. Правообладатель вправе по собственному усмотрению прекратить (временно или окончательно) предоставление услуг или отдельных функций всем Пользователям или конкретному Пользователю без предварительного уведомления.</p>
+                <p>4.4. Вы не вправе самостоятельно или с привлечением третьих лиц:</p>
+                <p>копировать (воспроизводить) в любой форме входящие в состав Сервиса программы для ЭВМ, базы данных, их элементы и Контент без предварительного письменного согласия Правообладателя;</p>
+                <p>вскрывать технологию, эмулировать, декомпилировать, дизассемблировать, дешифровать и производить иные аналогичные действия с Сервисом;</p>
+                <p>создавать программные продукты и/или сервисы с использованием Сервиса без предварительного разрешения Правообладателя.</p>
+                <p>4.5. При обнаружении ошибок в работе Сервиса или в размещённом Контенте просим сообщить об этом Правообладателю по адресу: org@forum-industry.ru.</p>
+                <p>4.6. В случае обнаружения нарушения ваших прав в связи с предоставлением Сервиса вам следует направить Правообладателю письменное уведомление с подробным изложением обстоятельств нарушения и ссылкой на соответствующий Контент.</p>
+                <p>4.7. В случае многократного или грубого нарушения условий настоящего Соглашения и/или требований законодательства Правообладатель вправе заблокировать доступ Пользователя к Сервису либо иным образом ограничить или прекратить предоставление ему услуг.</p>
+                <p>4.8. В случае привлечения Правообладателя к ответственности в связи с допущенными Пользователем нарушениями прав третьих лиц или требований законодательства, Пользователь обязан в полном объёме возместить причинённые убытки.</p>
+                <p>4.9. При любых обстоятельствах ответственность Правообладателя ограничена 1 000 (одной тысячей) рублей и возлагается на него исключительно при наличии в его действиях вины.</p>
+                <p class="offer-section">5. Уведомления</p>
+                <p>5.1. Вы соглашаетесь получать от Правообладателя на указанный при регистрации электронный адрес и/или контактный номер телефона информационные сообщения (далее — «уведомления») о важных событиях, происходящих в рамках Форума или в связи с ним, в том числе об изменении места проведения Форума.</p>
+                <p>5.2. Правообладатель вправе использовать уведомления для информирования Пользователя об изменениях и новых возможностях Сервиса, об изменении Соглашения или указанных в нём Обязательных документов, а также для рассылок рекламного характера.</p>
+                <p class="offer-section">6. Прочие условия</p>
+                <p>6.1. Зарегистрированный Пользователь самостоятельно определяет условия и порядок использования функциональных возможностей Сервиса, которые ни при каких условиях не могут противоречить настоящему Соглашению.</p>
+                <p>6.2. Применимое право. Настоящее Соглашение, порядок его заключения и исполнения, а также вопросы, не урегулированные Соглашением, регулируются действующим законодательством Российской Федерации.</p>
+                <p>6.3. Арбитраж. Все споры по Соглашению или в связи с ним подлежат рассмотрению в суде по месту нахождения Правообладателя в соответствии с действующим процессуальным правом Российской Федерации.</p>
+                <p>6.4. Изменения. Настоящее Соглашение может быть изменено или прекращено Правообладателем в одностороннем порядке без предварительного уведомления Пользователя и без выплаты какой-либо компенсации в связи с этим.</p>
+                <p>6.5. Редакция Соглашения. Действующая редакция настоящего Соглашения размещена на Сайте Правообладателя по адресу: forum-industry.ru/agreement.</p>
+                <p>6.6. Реквизиты Правообладателя:</p>
+                <p>Индивидуальный предприниматель Малышева Юлия Викторовна</p>
+                <p>ИНН: 540324189394</p>
+                <p>ОГРНИП: 321547600104728</p>
+                <p>Email: org@forum-industry.ru</p>
+                <p>Сайт: forum-industry.ru</p>
+                <p class="offer-date">Редакция от «____» __________ 202__ года</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-inner">
+          <div class="footer-top">
+            <div class="footer-tablet-row">
+              <div class="footer-col">
+                <p class="footer-date">18 июня</p>
+                <p class="footer-place">Отель Grand Autograf. Новосибирск, Красный проспект 65</p>
+                <a class="btn btn-white" href="tariff.html">Купить билет <span class="arrow" aria-hidden="true"></span></a>
+                <div class="socials footer-socials-main" aria-label="Социальные сети">
+                  <a class="social social-tg" href="#" aria-label="Telegram"></a>
+                  <a class="social social-vk" href="#" aria-label="VK"></a>
+                  <a class="social social-yt" href="#" aria-label="YouTube"></a>
+                </div>
+              </div>
+            </div>
+            <div class="footer-contact-grid">
+              <div class="footer-col">
+                <p class="footer-heading">Контакты</p>
+                <div class="footer-list">
+                  <p>Эл. почта: <span>org@forum-industry.ru</span></p>
+                  <p>Телеграм-личка: <span>@forum-industry.ru</span></p>
+                  <p>Телеграм-чат: <span>@forum-industry.ru</span></p>
+                </div>
+                <div class="socials footer-socials-contact" aria-label="Социальные сети">
+                  <a class="social social-tg" href="#" aria-label="Telegram"></a>
+                  <a class="social social-vk" href="#" aria-label="VK"></a>
+                  <a class="social social-yt" href="#" aria-label="YouTube"></a>
+                </div>
+              </div>
+              <div class="footer-col">
+                <p class="footer-heading">Партнёрам</p>
+                <div class="footer-list">
+                  <p>Эл. почта: <span>partner@forum-industry.ru</span></p>
+                  <p>Телеграм: <span>@forum-industry.ru</span></p>
+                </div>
+              </div>
+              <div class="footer-col">
+                <p class="footer-heading">Спикерам</p>
+                <div class="footer-list">
+                  <p>Эл. почта: <span>org@forum-industry.ru</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-sep"></div>
+          <div class="footer-bottom">
+            <div class="footer-col"><p class="footer-small">©2026 Индустрия AI</p></div>
+            <div class="footer-col footer-links">
+              <a href="agreement.html">Публичная оферта</a>
+              <a href="user-agreement.html">Пользовательское соглашение</a>
+            </div>
+            <div class="footer-col footer-links">
+              <a href="privacy.html">Политика конфиденциальности</a>
+              <a href="code-of-conduct.html">Нормы поведения</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
